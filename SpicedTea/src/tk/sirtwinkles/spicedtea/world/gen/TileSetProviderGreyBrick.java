@@ -19,8 +19,13 @@ public class TileSetProviderGreyBrick implements TileSetProvider {
 	}
 
 	@Override
-	public Tile getWallTile(int x, int y, WallSide side) {
-		return new TileGreyBrickWall(x, y, side);
+	public Tile getWallTile(int x, int y) {
+		return new TileGreyBrickWall(x, y);
+	}
+
+	@Override
+	public Tile getDoorTile(int x, int y) {
+		return new TileGreyBrickFloor(x, y);
 	}
 
 }

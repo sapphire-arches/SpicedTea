@@ -1,0 +1,7 @@
+package tk.sirtwinkles.spicedtea.world.tile;
+
+import tk.sirtwinkles.spicedtea.world.tile.virtual.AbstractStairs;
+
+public class TileRedBrickUpstairs extends AbstractStairs{
+
+}

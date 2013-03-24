@@ -2,6 +2,7 @@ package tk.sirtwinkles.spicedtea.world.gen;
 
 import tk.sirtwinkles.spicedtea.world.tile.Tile;
 import tk.sirtwinkles.spicedtea.world.tile.TileBlack;
+import tk.sirtwinkles.spicedtea.world.tile.TileRedBrickDoor;
 import tk.sirtwinkles.spicedtea.world.tile.TileRedBrickFloor;
 import tk.sirtwinkles.spicedtea.world.tile.TileRedBrickWall;
 import tk.sirtwinkles.spicedtea.world.tile.WallSide;
@@ -19,7 +20,12 @@ public class TileSetProviderRedBrick implements TileSetProvider {
 	}
 
 	@Override
-	public Tile getWallTile(int x, int y, WallSide side) {
-		return new TileRedBrickWall(x, y, side);
+	public Tile getWallTile(int x, int y) {
+		return new TileRedBrickWall(x, y);
+	}
+
+	@Override
+	public Tile getDoorTile(int x, int y) {
+		return new TileRedBrickDoor(x, y);
 	}
 }

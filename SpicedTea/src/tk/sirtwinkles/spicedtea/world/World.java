@@ -9,7 +9,7 @@ public class World {
 	private Level current;
 	
 	public World() {
-		this.current = LevelGenerator.create(80, 80, 0, new TileSetProviderRedBrick());
+		this.current = LevelGenerator.create(80, 40, 0, new TileSetProviderRedBrick());
 	}
 	
 	public void update(GameSpicedTea game, PlayingState play) {

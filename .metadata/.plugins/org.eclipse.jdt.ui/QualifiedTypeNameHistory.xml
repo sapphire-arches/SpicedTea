@@ -52,12 +52,12 @@
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.bspdungeon.SplitDirection"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.bspdungeon.LineUtils"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
-<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.Direction"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.Feature.FeatureRectangle"/>
-<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.MathUtils"/>
-<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.FeatureCorridor"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.CarveDungeonGenerator"/>
-<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.Feature"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.TileSetProvider"/>
+<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.MathUtils"/>
+<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.Feature"/>
+<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.Direction"/>
+<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.FeatureCorridor"/>
 </qualifiedTypeNameHistroy>

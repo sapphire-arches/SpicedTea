@@ -13,7 +13,7 @@ import tk.sirtwinkles.spicedtea.state.PlayingState;
 import tk.sirtwinkles.spicedtea.sys.System;
 
 public class RenderingSystem extends System {
-	private static final float PXL_SCALE = 1f;
+	private static final float PXL_SCALE = 2f;
 	private LinkedList<ImageComponentRenderer> componentRenderers;
 	private Viewport view;
 	private OrthographicCamera cam;

@@ -2,6 +2,7 @@ package tk.sirtwinkles.spicedtea.world.gen;
 
 import tk.sirtwinkles.spicedtea.world.Level;
 import tk.sirtwinkles.spicedtea.world.tile.Tile;
+import tk.sirtwinkles.spicedtea.world.tile.TileGreyBrickFloor;
 import tk.sirtwinkles.spicedtea.world.tile.WallSide;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.*;
 
@@ -38,12 +39,6 @@ public class LevelGenerator {
 					data[0][y] = WALL;
 				if (data[width - 1][y] == FLOOR)
 					data[width - 1][y] = WALL;
-				if (0 < x && x < width - 1 && 0 < y && y < height - 1) {
-					WallSide temp = detectWallSide(x, y, data);
-					if (data[x][y] == FLOOR && temp != null) {
-						data[x][y] = WALL;
-					}
-				}
 			}
 		}
 
@@ -58,12 +53,10 @@ public class LevelGenerator {
 					tiles[x][y] = tsp.getFloorTile(x, y);
 					break;
 				case WALL:
-					WallSide s = detectWallSide(x, y, data);
-					if (s != null) {
-						tiles[x][y] = tsp.getWallTile(x, y, s);
-					} else {
-						tiles[x][y] = tsp.getFloorTile(x, y);
-					}
+					tiles[x][y] = tsp.getWallTile(x, y);
+					break;
+				case DOOR:
+					tiles[x][y] = tsp.getDoorTile(x, y);
 					break;
 				default:
 					throw new java.lang.IllegalStateException("Tile at " + x

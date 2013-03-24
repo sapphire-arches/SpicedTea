@@ -1,5 +1,7 @@
 package tk.sirtwinkles.spicedtea.world.tile;
 
+import tk.sirtwinkles.spicedtea.world.tile.virtual.AbstractFloor;
+
 public class TileGreyBrickFloor extends AbstractFloor {
 
 	public TileGreyBrickFloor(int x, int y) {

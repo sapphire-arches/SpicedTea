@@ -15,26 +15,32 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
-		<item value="847" key="dialogWidth"/>
-		<item value="474" key="dialogHeight"/>
+		<item value="835" key="dialogWidth"/>
+		<item value="462" key="dialogHeight"/>
 		<list key="orderedProviders">
+			<item value="org.eclipse.ui.editors"/>
 		</list>
 		<list key="textArray">
+			<item value="featureco"/>
 		</list>
 		<list key="orderedElements">
+			<item value="org.eclipse.jdt.ui.CompilationUnitEditor"/>
 		</list>
 		<list key="textEntries">
+			<item value="1"/>
 		</list>
 	</section>
 	<section name="WorkbenchPreferenceDialogSettings">
 		<item value="82" key="DIALOG_Y_ORIGIN"/>
 		<item value="286" key="DIALOG_X_ORIGIN"/>
 	</section>
+	<section name="NewWizardAction">
+	</section>
 	<section name="InstallationDialogSettings">
 		<item value="684" key="DIALOG_WIDTH"/>
 		<item value="-35" key="DIALOG_Y_ORIGIN"/>
-		<item value="656" key="DIALOG_HEIGHT"/>
 		<item value="207" key="DIALOG_X_ORIGIN"/>
+		<item value="656" key="DIALOG_HEIGHT"/>
 		<item value="1|Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="ImportExportAction">

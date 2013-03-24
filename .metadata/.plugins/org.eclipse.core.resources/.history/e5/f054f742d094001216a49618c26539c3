@@ -1,0 +1,12 @@
+package tk.sirtwinkles.spicedtea.world.tile;
+
+import tk.sirtwinkles.spicedtea.world.tile.virtual.AbstractStairs;
+
+public class TileRedBrickUpstairs extends AbstractStairs{
+
+	public TileRedBrickUpstairs(int x, int y) {
+		super(id, imgX, imgY, x, y);
+		// TODO Auto-generated constructor stub
+	}
+
+}
