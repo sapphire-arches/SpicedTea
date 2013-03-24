@@ -1,0 +1,25 @@
+package tk.sirtwinkles.spicedtea.world;
+
+import java.util.LinkedList;
+
+import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.entities.Entity;
+import tk.sirtwinkles.spicedtea.state.PlayingState;
+
+public class World {
+	private Level current;
+	
+	public World() {
+	}
+	
+	public void update(GameSpicedTea game, PlayingState play) {
+		current.update(game, play);
+		if (current.isComlete()) {
+			current = current.getNextLevel();
+		}
+	}
+	
+	public Level getCurrent() {
+		return current;
+	}
+}

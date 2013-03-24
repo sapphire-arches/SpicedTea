@@ -1,0 +1,32 @@
+package tk.sirtwinkles.spicedtea.input;
+
+public class MouseEvent {
+	private int x, y, button;
+	private boolean pressed;
+	
+	public MouseEvent (int x, int y, int button) {
+		this.x = x;
+		this.y = y;
+		this.button = button;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public int getButton() {
+		return button;
+	}
+
+	public boolean isPressed() {
+		return pressed;
+	}
+
+	public void setPressed(boolean pressed) {
+		this.pressed = pressed;
+	}
+}

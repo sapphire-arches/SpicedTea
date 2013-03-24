@@ -1,0 +1,22 @@
+package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve;
+
+import tk.sirtwinkles.spicedtea.world.gen.dungeon.Direction;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.FLOOR;
+
+public class FeatureCorridor extends Feature {
+
+	@Override
+	public boolean canGenerate(int x, int y, int w, int h, int[][] data, Direction dir) {
+	}
+
+	@Override
+	public void generate(int x, int y, int w, int h, int[][] data, Direction dir) {
+		switch (dir) {
+		case N:
+		case S:
+		case E:
+		case W;
+		}
+		fillRect(x, y, w, h, data, FLOOR);
+	}
+}

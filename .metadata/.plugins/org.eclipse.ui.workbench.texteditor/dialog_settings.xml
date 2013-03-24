@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="297" key="DIALOG_WIDTH"/>
+		<item value="363" key="DIALOG_Y_ORIGIN"/>
+		<item value="862" key="DIALOG_X_ORIGIN"/>
+		<item value="349" key="DIALOG_HEIGHT"/>
+		<item value="1|Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="Math.random" key="selection"/>
+		<list key="findhistory">
+			<item value="Math.random"/>
+			<item value="DRAw"/>
+			<item value="in.right"/>
+		</list>
+		<list key="replacehistory">
+			<item value="random.nextDouble()"/>
+			<item value="in"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="277" key="DIALOG_Y_ORIGIN"/>
+		<item value="438" key="DIALOG_X_ORIGIN"/>
+	</section>
+</section>

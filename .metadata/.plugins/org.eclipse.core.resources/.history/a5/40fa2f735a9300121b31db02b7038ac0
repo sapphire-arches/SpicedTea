@@ -1,0 +1,25 @@
+package tk.sirtwinkles.spicedtea.world;
+
+import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.state.PlayingState;
+import tk.sirtwinkles.spicedtea.world.gen.LevelGenerator;
+import tk.sirtwinkles.spicedtea.world.gen.TileSetProviderGreyBrick;
+
+public class World {
+	private Level current;
+	
+	public World() {
+		this.current = LevelGenerator.create(85, 47, 0, new TileSetProviderGreyBrick());
+	}
+	
+	public void update(GameSpicedTea game, PlayingState play) {
+		current.update(game, play);
+		if (current.isComlete()) {
+			current = current.getNextLevel();
+		}
+	}
+	
+	public Level getCurrent() {
+		return current;
+	}
+}

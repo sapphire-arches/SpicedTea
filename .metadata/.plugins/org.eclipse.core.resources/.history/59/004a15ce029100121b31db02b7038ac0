@@ -1,0 +1,33 @@
+package tk.sirtwinkles.spicedtea.sys.render;
+
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
+
+import tk.sirtwinkles.spicedtea.GraphicsContext;
+import tk.sirtwinkles.spicedtea.world.Level;
+
+public class LevelRenderer {
+	/**
+	 * Conversion factor from world tile space to screen tile space.
+	 */
+	public static final int TILE_SIZE = 16;
+	
+	private Level level;
+	
+	public LevelRenderer(Level level) {
+		this.level = level;
+	}
+	
+	public void render(GraphicsContext context, Viewport view) {
+		SpriteBatch sb = context.getBatch();
+		Rectangle viewRect = view.getSizeAndPosition();
+		int w = (int)(viewRect.width / 16) + 1;
+		int h = (int)(viewRect.height / 16) + 1;
+		
+		for (int x = -1; x < w; ++x) {
+			for (int y = -1; y < h; ++y) {
+				
+			}
+		}
+	}
+}

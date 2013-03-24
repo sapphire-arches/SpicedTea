@@ -1,0 +1,5 @@
+package tk.sirtwinkles.spicedtea.world.gen;
+
+public class DungeonGenerator {
+
+}

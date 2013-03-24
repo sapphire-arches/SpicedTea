@@ -1,0 +1,11 @@
+package tk.sirtwinkles.spicedtea.world.tile;
+
+public class TileGreyBrickFloor extends AbstractFloor {
+
+	public TileGreyBrickFloor(int x,
+			int y) {
+		super(id, baseImgX, baseImgY, x, y);
+		// TODO Auto-generated constructor stub
+	}
+
+}

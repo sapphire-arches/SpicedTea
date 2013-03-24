@@ -1,0 +1,16 @@
+package tk.sirtwinkles.spicedtea.input;
+
+public class MouseEvent {
+	private int x, y, button;
+	
+	public MouseEvent (int x, int y, int button) {
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+}

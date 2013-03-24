@@ -1,0 +1,67 @@
+package tk.sirtwinkles.spicedtea.state;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
+
+import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.components.ImageComponent;
+import tk.sirtwinkles.spicedtea.entities.Entity;
+import tk.sirtwinkles.spicedtea.sys.render.RenderingSystem;
+import tk.sirtwinkles.spicedtea.sys.render.Viewport;
+import tk.sirtwinkles.spicedtea.world.World;
+
+public class PlayingState implements GameState {
+	private RenderingSystem render;
+	private World world;
+	private AssetManager manager;
+	
+	public PlayingState(AssetManager manager) {
+		this.manager = manager;
+	}
+
+	@Override
+	public void onEnterState(GameSpicedTea game) {
+		render = new RenderingSystem(new Viewport(new Rectangle()), this);
+		Entity ent = new Entity("tk.sirtwinkles.entities.MagicMan");
+		Texture tex = new Texture(Gdx.files.internal("data/badlogic.jpg"));
+		ent.addComponent(new ImageComponent("tk.sirtwinkles.entities.MagicMan.render", render, new TextureRegion(tex)));
+	}
+
+	@Override
+	public void onLeaveState(GameSpicedTea game) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public boolean switchState(GameSpicedTea game) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void render(GameSpicedTea game) {
+		render.run(game);
+	}
+
+	@Override
+	public void tick(GameSpicedTea game) {
+	}
+
+	@Override
+	public GameState getNextState(GameSpicedTea game) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void onResize(int width, int height) {
+		render.resizeViewport(width, height);
+	}
+	
+	public AssetManager getAssets() {
+		return manager;
+	}
+}

@@ -1,0 +1,71 @@
+package tk.sirtwinkles.spicedtea;
+
+import tk.sirtwinkles.spicedtea.input.InputQueue;
+import tk.sirtwinkles.spicedtea.state.GameState;
+
+import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.TimeUtils;
+
+public class GameSpicedTea implements ApplicationListener {
+	private GameState currentState;
+	/**
+	 * The timestep. We always step at 60 fps.
+	 */
+	public static final double TIMESTEP = 0.01666666666;
+	/**
+	 * Time we didn't use last frame.
+	 */
+	private double overflowTime;
+	
+	/**
+	 * The graphics context.
+	 */
+	private GraphicsContext context;
+	
+	@Override
+	public void create() {
+		overflowTime = 0;
+		context = new GraphicsContext();
+		Gdx.input.setInputProcessor(new InputQueue());
+	}
+
+	@Override
+	public void dispose() {
+	}
+
+	@Override
+	public void render() {
+		double time = Gdx.graphics.getDeltaTime() + overflowTime;
+		long start = TimeUtils.nanoTime();
+		while (time > TIMESTEP) {
+			currentState.tick(this);
+			if (currentState.switchState(this)) {
+				currentState.onLeaveState(this);
+				currentState = currentState.getNextState(this);
+				currentState.onEnterState(this);
+				break;
+			}
+		}
+		long end = TimeUtils.nanoTime();
+		overflowTime = time - ((end - start) / 1000000000.);
+		currentState.render(this);
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		currentState.onResize(width, height);
+	}
+
+	@Override
+	public void pause() {
+	}
+
+	@Override
+	public void resume() {
+	}
+	
+	public GraphicsContext getContext() {
+		return context;
+	}
+}

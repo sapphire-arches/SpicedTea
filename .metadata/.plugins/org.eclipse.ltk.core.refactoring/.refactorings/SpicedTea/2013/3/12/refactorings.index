@@ -1,0 +1,19 @@
+1363654994106	Move compilation unit
+1363655090021	Delete element
+1363658820684	Delete element
+1363658988052	Move compilation unit
+1363659273166	Encapsulate field 'x'
+1363659279922	Encapsulate field 'y'
+1363659284462	Encapsulate field 'pointer'
+1363659362575	Encapsulate field 'x'
+1363659367231	Encapsulate field 'y'
+1363659370365	Encapsulate field 'button'
+1363659488637	Encapsulate field 'c'
+1363659501638	Encapsulate field 'pressed'
+1363659554942	Encapsulate field 'pressed'
+1363659890672	Delete element
+1363661887378	Move folder
+1363742791417	Move compilation unit
+1364071829130	Rename local variable 'bsp'
+1364073475179	Extract constant '_100'
+1364079776004	Rename package 'tk.sirtwinkles.spicedtea.world.gen.bspdungeon'

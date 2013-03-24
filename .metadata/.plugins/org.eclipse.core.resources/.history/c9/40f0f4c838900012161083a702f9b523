@@ -1,0 +1,23 @@
+package tk.sirtwinkles.spicedtea.state;
+
+import tk.sirtwinkles.spicedtea.GameSpicedTea;
+
+public interface GameState {
+	/**
+	 * Called when the state is entered.
+	 * Perform initialisation here.
+	 * @param game Game object
+	 */
+	public void onEnterState(GameSpicedTea game);
+	/**
+	 * Called when the state is left.
+	 * Perform cleanup here.
+	 * @param game Game object.
+	 */
+	public void onLeaveState(GameSpicedTea game);
+	public boolean switchState(GameSpicedTea game);
+	public void render(GameSpicedTea game);
+	public void tick(GameSpicedTea game);
+	public GameState getNextState(GameSpicedTea game);
+	public void onResize(int width, int height);
+}

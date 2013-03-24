@@ -1,0 +1,27 @@
+package tk.sirtwinkles.spicedtea.world.tile;
+
+public class TileRedBrickWall extends AbstractWall {
+	
+
+	public TileRedBrickWall(int x, int y, WallSide side) {
+		super("tk.sirtwinkles.spicedtea.world.tile.RedBrick", 4, 3, x, y);
+	}
+	
+	public int getImageX() {
+		switch(side) {
+		case N : imgX = (int)(5 + 2 * Math.random()); imgY = 2; break;
+		case E : imgX = 7; imgY = (int)(3 + 2 * Math.random()); break;
+		case S : imgX = (int)(5 + 2 * Math.random()); imgY = 5; break;
+		case W : imgX = 4; imgY = (int)(3 + 2 * Math.random()); break;
+		case NE: imgX = 4; imgY = 2; break;
+		case NW: imgX = 7; imgY = 2; break;
+		case SE: imgX = 4; imgY = 5; break;
+		case SW: imgX = 7; imgY = 5; break;
+		case NEO: imgX = 5; imgY = 4; break;
+		case NWO: imgX = 6; imgY = 4; break;
+		case SEO: imgX = 5; imgY = 3; break;
+		case SWO: imgX = 5; imgY = 4; break;
+		}
+		return imgX;
+	}
+}

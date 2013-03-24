@@ -1,0 +1,21 @@
+package tk.sirtwinkles.spicedtea.components;
+
+import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.sys.render.RenderingSystem;
+
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+public abstract class RenderComponent extends Component {
+	private TextureRegion tex;
+	private RenderingSystem sys;
+
+	public RenderComponent(String id, RenderingSystem sys) {
+		super(id);
+		this.tex = tex;
+	}
+
+	@Override
+	public void update(GameSpicedTea game) {
+		
+	}
+}

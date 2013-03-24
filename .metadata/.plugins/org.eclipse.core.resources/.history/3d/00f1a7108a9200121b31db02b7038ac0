@@ -1,0 +1,9 @@
+package tk.sirtwinkles.spicedtea.world.tile;
+
+public class TileRedBrickFloor extends AbstractFloor {
+
+	public TileRedBrickFloor(int x, int y) {
+		super("tk.sirtwinkles.spicedtea.world.tile.RedBrick", (int) (4 * Math
+				.random()), 2 + (int) (4 * Math.random()), x, y);
+	}
+}

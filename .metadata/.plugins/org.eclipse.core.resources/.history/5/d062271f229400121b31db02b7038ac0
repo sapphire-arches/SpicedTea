@@ -1,0 +1,31 @@
+package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve;
+
+import tk.sirtwinkles.spicedtea.world.gen.dungeon.Direction;
+import static tk.sirtwinkles.spicedtea.MathUtils.random;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.FLOOR;
+
+public class FeatureCorridor extends Feature {
+	public static final int WIDTH = 3;
+
+	@Override
+	public boolean generate(int x, int y, int[][] data, Direction dir) {
+		int mSize = (data.length > data[0].length) ? data.length : data[0].length;
+		int length = random.nextInt(mSize);
+		switch (dir) {
+		case N:
+			if (test(x - 1, y, WIDTH + 1, length, data)) {
+				fillRect(x, y, WIDTH, length, data, FLOOR);
+				break;
+			}
+			return false;
+		case E:
+			if (test(x, y - 1, length, WIDTH + 1, data)) {
+				fillRect(x, y, length, WIDTH, data, FLOOR);
+				break;
+			}
+			return false;
+		case S:
+		case W:
+		}
+	}
+}

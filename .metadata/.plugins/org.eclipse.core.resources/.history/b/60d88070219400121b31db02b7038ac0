@@ -1,0 +1,29 @@
+package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve;
+
+import tk.sirtwinkles.spicedtea.world.gen.dungeon.Direction;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.BACKGROUND;
+
+public abstract class Feature {
+	
+	public abstract boolean canGenerate (int x, int y, int w, int h, int[][] data, Direction dir);
+	public abstract void generate (int x, int y, int w, int h, int[][] data, Direction dir);
+
+	public boolean test(int x, int y, int w, int h, int[][] data) {
+		for (int xx = x; xx < x + w; ++xx) {
+			for (int yy = y; yy < y + h; ++yy) {
+				if (data[xx][yy] != BACKGROUND) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	public void fillRect(int x, int y, int w, int h, int[][] data, int to) {
+		for (int xx = x; xx < x + w; ++xx) {
+			for (int yy = y; yy < y + h; ++yy) {
+				data[xx][yy] = to;
+			}
+		}
+	}
+}

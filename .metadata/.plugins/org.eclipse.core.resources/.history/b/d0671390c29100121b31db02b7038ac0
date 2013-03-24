@@ -1,0 +1,10 @@
+package tk.sirtwinkles.spicedtea.world.tile;
+
+/**
+ * Which sides of the wall are impassable.
+ * @author bob_twinkles
+ *
+ */
+public enum WallSide {
+
+}

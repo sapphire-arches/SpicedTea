@@ -1,0 +1,13 @@
+package tk.sirtwinkles.spicedtea.sys.render;
+
+import tk.sirtwinkles.spicedtea.components.RenderComponent;
+
+public class ImageRenderer {
+	private RenderComponent comp;
+	
+	public ImageRenderer(RenderComponent comp) {
+		this.comp = comp;
+	}
+	
+	public void Render
+}

@@ -1,0 +1,39 @@
+package tk.sirtwinkles.spicedtea.world;
+
+import com.badlogic.gdx.utils.Pool;
+
+public class Point {
+	
+	public int x, y;
+
+	private Point() {
+		x = 0;
+		y = 0;
+	}
+
+	private Point(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	private static Pool<Point> points;
+	
+	static {
+		points = new Pool<Point>();
+	}
+	
+	public static Point getPoint() {
+		return points.obtain();
+	}
+	
+	public static Point getPoint(int x, int y) {
+		Point tr = points.obtain();
+		tr.x = x;
+		tr.y = y;
+		return tr;
+	}
+	
+	public static void free(Point p) {
+		points.free(p);
+	}
+}

@@ -1,0 +1,42 @@
+package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve;
+
+import tk.sirtwinkles.spicedtea.world.gen.dungeon.Direction;
+import static tk.sirtwinkles.spicedtea.MathUtils.random;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.BACKGROUND;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.FLOOR;
+
+public class FeatureRoom extends Feature {
+
+	private static final int MAX_SIZE = 10;
+
+	@Override
+	public boolean generate(int x, int y, int[][] data, Direction dir) {
+		int rw = random.nextInt(MAX_SIZE);
+		int rh = random.nextInt(MAX_SIZE);
+		int rx,ry;
+		rx = ry = 0;
+		switch (dir) {
+		case N:
+			rx = x - rw / 2;
+			ry = y - rh;
+			break;
+		case E:
+			rx = x;
+			ry = y - rh / 2;
+			break;
+		case S:
+			rx = x - rw / 2;
+			ry = y;
+			break;
+		case W:
+			rx = x - rw - 1;
+			ry = y - rh / 2;
+			break;
+		}
+		if (test(rx - 1, ry - 1, rh + 2, ry + 2, data, BACKGROUND) == 0) {
+			fill(rx - 1, ry - 1, rh + 2, rw + 2, data, FLOOR);
+			return true;
+		}
+		return false;
+	}
+}

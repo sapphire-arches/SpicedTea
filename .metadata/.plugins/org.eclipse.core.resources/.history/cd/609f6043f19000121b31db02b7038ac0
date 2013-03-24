@@ -1,0 +1,57 @@
+package tk.sirtwinkles.spicedtea.sys.render;
+
+import java.util.LinkedList;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Rectangle;
+
+import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.GraphicsContext;
+import tk.sirtwinkles.spicedtea.sys.System;
+
+public class RenderingSystem extends System {
+	private LinkedList<ImageComponentRenderer> componentRenderers;
+	private Viewport view;
+	private OrthographicCamera cam;
+	
+	public RenderingSystem(Viewport view) {
+		super("tk.sirtwinkles.spicedtea.sys.render.RenderSystem");
+		this.componentRenderers = new LinkedList<ImageComponentRenderer>();
+		this.view = view;
+		this.cam = new OrthographicCamera(1, 1);
+		Gdx.graphics.getGL10().glClearColor(0.1f, 0.0f, 0.1f, 1.0f);
+	}
+
+	@Override
+	public void run(GameSpicedTea game) {
+		//setup of some vars.
+		GL10 gl10 = Gdx.graphics.getGL10();
+		GraphicsContext context = game.getContext();
+		
+		Rectangle viewRect = view.getSizeAndPosition();
+		cam.viewportWidth = viewRect.width;
+		cam.viewportHeight = viewRect.height;
+		cam.update();
+
+		gl10.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		context.begin(); // Begin rendering.
+		for (ImageComponentRenderer ren : componentRenderers) {
+			ren.render(context);
+		}
+		context.end();
+	}
+	
+	public void addRenderer(ImageComponentRenderer comp) {
+		componentRenderers.add(comp);
+	}
+	
+	public void removeRenderer(ImageComponentRenderer comp) {
+		componentRenderers.remove(comp);
+	}
+
+	public void resizeViewport(float width, float height) {
+		view.resize(width, height);
+	}
+}

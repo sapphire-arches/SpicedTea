@@ -1,0 +1,70 @@
+package tk.sirtwinkles.spicedtea.input;
+
+import java.util.LinkedList;
+
+import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.utils.Pool;
+
+public class InputQueue implements InputProcessor {
+	private LinkedList<TouchEvent> touchEvents;
+	private LinkedList<KeyEvent> keyEvents;
+	
+	@Override
+	public boolean keyDown(int keycode) {
+		keyEvents.add(new KeyEvent(keycode, true));
+		return true;
+	}
+
+	@Override
+	public boolean keyUp(int keycode) {
+		keyEvents.add(new KeyEvent(keycode, false));
+		return true;
+	}
+
+	@Override
+	public boolean keyTyped(char character) {
+		return false; //We don't want to handle these, just up/down events. Maybe a seperate queue for them if needed in the future.
+	}
+
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		touchEvents.add(new TouchEvent(screenX, screenY, pointer, true));
+		return true;
+	}
+
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		touchEvents.add(new TouchEvent(screenX, screenY, pointer, false));
+		return true;
+	}
+
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		// We probably don't want these.
+		return false;
+	}
+
+	@Override
+	public boolean mouseMoved(int screenX, int screenY) {
+		//We don't need these.
+		return false;
+	}
+
+	@Override
+	public boolean scrolled(int amount) {
+		//Don't need this either (probably)
+		return false;
+	}
+
+	public boolean needTouchProccesing() {
+		return touchEvents.size() > 0;
+	}
+	
+	public TouchEvent nextEvent() {
+		return touchEvents.removeFirst();
+	}
+	
+	public boolean needKeyProccesing() {
+		return keyEvents.size() > 0;
+	}
+}

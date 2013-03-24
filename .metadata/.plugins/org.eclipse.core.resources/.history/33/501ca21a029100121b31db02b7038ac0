@@ -1,0 +1,26 @@
+package tk.sirtwinkles.spicedtea.world.tile;
+
+public abstract class Tile {
+	private String id;
+	/**
+	 * Image coordinates in terrain.png
+	 */
+	private int imgX, imgY;
+	/**
+	 * Position in the world;
+	 */
+	private int x, y;
+	
+	/**
+	 * Constructs a new tile object.
+	 * @param id Name of this tile.
+	 * 
+	 */
+	public Tile(String id, int imgX, int imgY, int x, int y) {
+		this.id = id;
+		this.imgX = imgX;
+		this.imgY = imgY;
+		this.x = x;
+		this.y = y;
+	}
+}

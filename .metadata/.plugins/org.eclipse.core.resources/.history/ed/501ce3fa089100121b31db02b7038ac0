@@ -1,0 +1,7 @@
+package tk.sirtwinkles.spicedtea.world.tile;
+
+public class TileBlack extends Tile {
+	public TileBlack(int x, int y) {
+		super("tk.sirtwinkles.spicedtea.world.tile.TileBlack", (int)(4 * Math.random()), 0, x, y));
+	}
+}

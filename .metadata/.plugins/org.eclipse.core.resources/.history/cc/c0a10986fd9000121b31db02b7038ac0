@@ -1,0 +1,45 @@
+package tk.sirtwinkles.spicedtea.world;
+
+import java.util.LinkedList;
+
+import tk.sirtwinkles.spicedtea.entities.Entity;
+import tk.sirtwinkles.spicedtea.world.tile.Tile;
+
+public class Level {
+	private Tile[][] tiles;
+	private int width, height;
+	private LinkedList<Entity> ents;
+
+	public Level(int width, int height) {
+		tiles = new Tile[width][height];
+		this.width = width;
+		this.height = height;
+		this.ents = new LinkedList<Entity>();
+	}
+
+	public Tile getTile(int x, int y) {
+		if (0 <= x && x < width && 0 <= y && y < height) {
+			return null;
+		}
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void addEntity(Entity ent) {
+		ents.add(ent);
+	}
+
+	public void removeEntity(Entity ent) {
+		ents.remove(ent);
+	}
+
+	public LinkedList<Entity> getEntities() {
+		return ents;
+	}
+}

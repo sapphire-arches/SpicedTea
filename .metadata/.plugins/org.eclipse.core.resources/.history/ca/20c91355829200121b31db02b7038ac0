@@ -1,0 +1,39 @@
+package tk.sirtwinkles.spicedtea.world.tile;
+
+public class TileRedBrickWall extends Tile {
+	
+	//private WallSide side;
+
+	public TileRedBrickWall(int x, int y, WallSide side) {
+		super("tk.sirtwinkles.spicedtea.world.tile.RedBrick", 0, 0, x, y);
+		switch(side) {
+		case S : imgX = (int)(5 + 2 * Math.random()); imgY = 2; break;
+		case W : imgX = 4; imgY = (int)(3 + 2 * Math.random()); break;
+		case N : imgX = (int)(5 + 2 * Math.random()); imgY = 5; break;
+		case E : imgX = 7; imgY = (int)(3 + 2 * Math.random()); break;
+		case NE: imgX = 7; imgY = 5; break;
+		case NW: imgX = 4; imgY = 5; break;
+		case SE: imgX = 7; imgY = 2; break;
+		case SW: imgX = 4; imgY = 2; break;
+		case NS: imgX = (int)(5 + 2 * Math.random()); imgY = 2; break;
+		case EW: imgX = 6; imgY =(int) (3 + 2 * Math.random()); break;
+		}
+		this.side = side;
+	}
+	/**
+	public int getImageX() {
+		switch(side) {
+		case S : imgX = (int)(5 + 2 * Math.random()); imgY = 2; break;
+		case W : imgX = 4; imgY = (int)(3 + 2 * Math.random()); break;
+		case N : imgX = (int)(5 + 2 * Math.random()); imgY = 5; break;
+		case E : imgX = 7; imgY = (int)(3 + 2 * Math.random()); break;
+		case NE: imgX = 7; imgY = 5; break;
+		case NW: imgX = 4; imgY = 5; break;
+		case SE: imgX = 7; imgY = 2; break;
+		case SW: imgX = 4; imgY = 2; break;
+		case NS: imgX = (int)(5 + 2 * Math.random()); imgY = 3; break;
+		case EW: imgX = (int)(5 + 2 * Math.random()); imgY = 4; break;
+		}
+		return imgX;
+	}*/
+}

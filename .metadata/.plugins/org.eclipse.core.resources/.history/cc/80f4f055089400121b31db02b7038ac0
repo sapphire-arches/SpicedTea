@@ -1,0 +1,54 @@
+package tk.sirtwinkles.spicedtea.world.gen.bspdungeon;
+
+import static tk.sirtwinkles.spicedtea.MathUtils.random;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.FLOOR;
+import tk.sirtwinkles.spicedtea.world.Point;
+
+public class BSPDungeonGenerator {
+
+	public static void generate(int width, int height, int depth, int[][] data) {
+		BSPTree bsp = BSPTree.buildTree(width, height, 4);
+
+		drawTree(bsp, depth, data);
+	}
+
+	private static void drawTree(BSPTree bsp, int depth, int[][] data) {
+		if (bsp.right == null && bsp.left == null) {
+			if (bsp.draw) {
+				for (int x = bsp.x + 1; x < bsp.x + bsp.width - 1; ++x) {
+					for (int y = bsp.y + 1; y < bsp.y + bsp.height - 1; ++y) {
+						data[x][y] = FLOOR;
+					}
+				}
+			}
+		} else {
+			drawTree(bsp.right, depth, data);
+			drawTree(bsp.left, depth, data);
+			connectBSPSubNodes(bsp, data);
+		}
+	}
+
+	private static void connectBSPSubNodes(BSPTree bsp, int[][] data) {
+		if (!bsp.right.draw || !bsp.left.draw)
+			return; // Nothing to do, the left and right children aren't even
+					// both rooms!
+		Point rp, lp;
+		do {
+			rp = getValidLocation(bsp.right, data);
+			lp = getValidLocation(bsp.left, data);
+		} while (false);
+		Point.free(rp);
+		Point.free(lp);
+	}
+
+	private static Point getValidLocation(BSPTree in, int[][] data) {
+		
+		int x, y;
+		do {
+			x = in.x + random.nextInt(in.width);
+			y = in.y + random.nextInt(in.height);
+		} while (((x == in.x || y == in.y) || data[x][y] != FLOOR));
+		
+		return Point.getPoint(x, y);
+	}
+}

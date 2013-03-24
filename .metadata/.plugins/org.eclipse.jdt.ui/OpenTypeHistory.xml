@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.components{Component.java[Component" modifiers="1025" timestamp="1363661208000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.sys.render{Viewport.java[Viewport" modifiers="1" timestamp="1363746986000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.state{GameState.java[GameState" modifiers="513" timestamp="1363747384000"/>
+<typeInfo handle="=SpicedTea/libs\/gdx.jar&lt;com.badlogic.gdx(InputProcessor.class[InputProcessor" modifiers="1537" timestamp="1362275112000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.input{TouchEvent.java[TouchEvent" modifiers="1" timestamp="1363659476000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.input{KeyEvent.java[KeyEvent" modifiers="1" timestamp="1363659733000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.state{PlayingState.java[PlayingState" modifiers="1" timestamp="1363747460000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea{GameSpicedTea.java[GameSpicedTea" modifiers="1" timestamp="1363747581000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea{GraphicsContext.java[GraphicsContext" modifiers="1" timestamp="1363747456000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.world.tile{Tile.java[Tile" modifiers="1025" timestamp="1363831459000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.world.tile{TileRedBrickFloor.java[TileRedBrickFloor" modifiers="1" timestamp="1363913245000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.sys.render{LevelRenderer.java[LevelRenderer" modifiers="1" timestamp="1363910777000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.world.tile{TileRedBrickWall.java[TileRedBrickWall" modifiers="1" timestamp="1363914153000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.world.gen{TileSetProvider.java[TileSetProvider" modifiers="513" timestamp="1363914460000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.world.tile{WallSide.java[WallSide" modifiers="16385" timestamp="1363910003000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.world{World.java[World" modifiers="1" timestamp="1364002755000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.world{Point.java[Point" modifiers="1" timestamp="1364073533000"/>
+<typeInfo handle="=SpicedTea/libs\/gdx.jar&lt;com.badlogic.gdx.math(MathUtils.class[MathUtils" modifiers="33" timestamp="1362275112000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea{MathUtils.java[MathUtils" modifiers="17" timestamp="1364074816000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.world.tile{TileBlack.java[TileBlack" modifiers="1" timestamp="1364074990000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.world.tile{AbstractWall.java[AbstractWall" modifiers="1" timestamp="1364076655000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.world.tile{AbstractFloor.java[AbstractFloor" modifiers="1025" timestamp="1364075327000"/>
+<typeInfo handle="=SpicedTea/src&lt;tk.sirtwinkles.spicedtea.sys.render{RenderingSystem.java[RenderingSystem" modifiers="1" timestamp="1364079172000"/>
+</typeInfoHistroy>

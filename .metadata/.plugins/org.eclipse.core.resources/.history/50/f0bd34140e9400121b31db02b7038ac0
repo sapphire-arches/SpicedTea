@@ -1,0 +1,7 @@
+package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve;
+
+public class CarveDungeonGenerator {
+	public static void generate(int width, int height, int depth, int[][] data) {
+		//We assume that the world is already set to BACKGROUND
+	}
+}

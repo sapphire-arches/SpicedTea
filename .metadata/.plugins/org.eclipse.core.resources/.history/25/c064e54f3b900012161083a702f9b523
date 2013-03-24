@@ -1,0 +1,6 @@
+package tk.sirtwinkles.spicedtea.input;
+
+public class KeyEvent {
+	private char c;
+	private boolean pressed;
+}
