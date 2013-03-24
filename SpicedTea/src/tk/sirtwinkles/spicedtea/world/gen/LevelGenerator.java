@@ -2,7 +2,6 @@ package tk.sirtwinkles.spicedtea.world.gen;
 
 import tk.sirtwinkles.spicedtea.world.Level;
 import tk.sirtwinkles.spicedtea.world.tile.Tile;
-import tk.sirtwinkles.spicedtea.world.tile.TileGreyBrickFloor;
 import tk.sirtwinkles.spicedtea.world.tile.WallSide;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.*;
 

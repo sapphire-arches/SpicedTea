@@ -7,9 +7,6 @@ import tk.sirtwinkles.spicedtea.entities.Entity;
 import tk.sirtwinkles.spicedtea.state.PlayingState;
 import tk.sirtwinkles.spicedtea.world.tile.Tile;
 import tk.sirtwinkles.spicedtea.world.tile.TileBlack;
-import tk.sirtwinkles.spicedtea.world.tile.TileRedBrickFloor;
-import tk.sirtwinkles.spicedtea.world.tile.TileRedBrickWall;
-import tk.sirtwinkles.spicedtea.world.tile.WallSide;
 
 public class Level {
 	private Tile[][] tiles;

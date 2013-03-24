@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
 import tk.sirtwinkles.spicedtea.GraphicsContext;
+import tk.sirtwinkles.spicedtea.loaders.StringAssetLoader;
 
 public class AssetLoadState implements GameState {
 	private AssetManager manager;
@@ -16,9 +17,12 @@ public class AssetLoadState implements GameState {
 	@Override
 	public void onEnterState(GameSpicedTea game) {
 		manager = new AssetManager();
+		//Load config strings.
+		manager.setLoader(String.class, new StringAssetLoader());
 		//Queue up assets.
 		//TODO: Find a better way to request all this. Config file?
 		manager.load("data/terrain.png", Texture.class);
+		manager.load("data/config/tilesets/GreyBrick.json", String.class);
 		
 		
 		Gdx.gl10.glClearColor(0.5f, 0.1f, 0.1f, 1.0f);

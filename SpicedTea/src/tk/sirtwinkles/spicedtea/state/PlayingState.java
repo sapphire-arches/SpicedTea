@@ -19,7 +19,7 @@ public class PlayingState implements GameState {
 
 	@Override
 	public void onEnterState(GameSpicedTea game) {
-		world = new World();
+		world = new World(manager);
 		render = new RenderingSystem(new Viewport(new Rectangle()), this);
 	}
 
