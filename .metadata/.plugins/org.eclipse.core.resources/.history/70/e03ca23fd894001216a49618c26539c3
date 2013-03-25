@@ -1,0 +1,39 @@
+package tk.sirtwinkles.spicedtea.world.gen;
+
+import com.badlogic.gdx.utils.JsonReader;
+
+import tk.sirtwinkles.spicedtea.world.tile.Tile;
+
+public class JSONTileSetProvider implements TileSetProvider {
+	
+	public JSONTileSetProvider(String config) {
+		JsonReader json = new JsonReader();
+		Object root = json.parse(config);
+		System.out.println(root.getClass());
+	}
+	
+	@Override
+	public Tile getBackgroundTile(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Tile getFloorTile(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Tile getWallTile(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Tile getDoorTile(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

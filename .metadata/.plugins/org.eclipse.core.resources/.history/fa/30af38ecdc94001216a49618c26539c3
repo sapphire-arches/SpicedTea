@@ -1,0 +1,61 @@
+package tk.sirtwinkles.spicedtea.world.gen;
+
+import java.util.HashMap;
+
+import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.ObjectMap.Entry;
+import com.badlogic.gdx.utils.OrderedMap;
+
+import static tk.sirtwinkles.spicedtea.MathUtils.random;
+import tk.sirtwinkles.spicedtea.world.tile.JSONBackgroundTile;
+import tk.sirtwinkles.spicedtea.world.tile.Tile;
+
+public class JSONTileSetProvider implements TileSetProvider {
+	class TileDescriptor {
+		int x, y, w, h;
+	}
+	HashMap<String, TileDescriptor> tileDesc;
+	String idBase;
+	
+	public JSONTileSetProvider(String config) {
+		JsonReader json = new JsonReader();
+		OrderedMap<String, Object> root = (OrderedMap<String, Object>) json.parse(config);
+		OrderedMap<String, Object> tiles = (OrderedMap<String, Object>) root.get("tiles");
+		OrderedMap<String, Object> tileObject;
+		for (Entry<String, Object> s : tiles.entries()) {
+			TileDescriptor temp = new TileDescriptor();
+			tileObject = (OrderedMap<String, Object>) s.value;
+			temp.x = ((Float) tileObject.get("x")).intValue();
+			temp.y = ((Float) tileObject.get("y")).intValue();
+			temp.w = ((Float) tileObject.get("width")).intValue();
+			temp.h = ((Float) tileObject.get("height")).intValue();
+		}
+		this.idBase = (String)root.get("name");
+	}
+	
+	@Override
+	public Tile getBackgroundTile(int x, int y) {
+		TileDescriptor t = tileDesc.get("background");
+		int xoff = random.nextInt(t.w);
+		return new JSONBackgroundTile(idBase + ".bg", imgX, imgY, x, y)
+	}
+
+	@Override
+	public Tile getFloorTile(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Tile getWallTile(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Tile getDoorTile(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

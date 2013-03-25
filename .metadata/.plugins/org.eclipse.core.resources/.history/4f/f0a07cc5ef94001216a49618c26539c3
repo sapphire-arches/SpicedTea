@@ -1,0 +1,30 @@
+package tk.sirtwinkles.spicedtea.entities;
+
+import java.util.HashMap;
+
+import tk.sirtwinkles.spicedtea.components.Component;
+import tk.sirtwinkles.spicedtea.components.ImageComponent;
+import tk.sirtwinkles.spicedtea.sys.render.RenderingSystem;
+
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.OrderedMap;
+
+public final class EntityFactory {
+	
+	public static Entity buildEntity(String jsonConfig, AssetManager manager, RenderingSystem ren) {
+		JsonReader reader = new JsonReader();
+		OrderedMap<String, Object> root = (OrderedMap<String, Object>) reader.parse(jsonConfig);
+		Entity tr = new Entity((String) root.get("name"));
+		OrderedMap<String, Object> comps = (OrderedMap<String, Object>) root.get("components");
+		
+		for (String s : comps.entries())
+		
+		return tr;
+	}
+	
+	/**
+	 * This class should never be instantiated.
+	 */
+	private EntityFactory() {}
+}

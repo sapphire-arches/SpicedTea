@@ -1,0 +1,22 @@
+package tk.sirtwinkles.spicedtea.sys.render;
+
+import javax.swing.text.Position;
+
+import com.badlogic.gdx.math.Rectangle;
+
+import tk.sirtwinkles.spicedtea.GraphicsContext;
+import tk.sirtwinkles.spicedtea.components.ImageComponent;
+import tk.sirtwinkles.spicedtea.components.PositionComponent;
+
+public class ImageComponentRenderer {
+	private ImageComponent comp;
+	
+	public ImageComponentRenderer(ImageComponent comp) {
+		this.comp = comp;
+	}
+	
+	public void render(GraphicsContext context, Viewport view) {
+		Rectangle rect = view.getSizeAndPosition();
+		context.getBatch().draw(comp.getImage(), comp.getX(), comp.getY());
+	}
+}

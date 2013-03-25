@@ -22,8 +22,9 @@ public class AssetLoadState implements GameState {
 		//Queue up assets.
 		//TODO: Find a better way to request all this. Config file?
 		manager.load("data/terrain.png", Texture.class);
+		manager.load("data/monsters.png", Texture.class);
 		manager.load("data/config/tilesets/GreyBrick.json", String.class);
-		
+		manager.load("data/config/charecters/Player.json", String.class);
 		
 		Gdx.gl10.glClearColor(0.5f, 0.1f, 0.1f, 1.0f);
 	}

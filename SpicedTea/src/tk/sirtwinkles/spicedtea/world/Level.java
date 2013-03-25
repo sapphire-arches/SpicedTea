@@ -59,12 +59,10 @@ public class Level {
 	}
 
 	public boolean isComlete() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public Level getNextLevel() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -15,17 +15,18 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class ImageComponent extends Component {
 	private TextureRegion tex;
 
-	public ImageComponent(String id, RenderingSystem sys, TextureRegion tex) {
-		super(id);
+	public ImageComponent(RenderingSystem sys, TextureRegion tex) {
+		super("image");
 		this.tex = tex;
+		float v2 = tex.getV();
+		float v = tex.getV2();
+		tex.setV(v);
+		tex.setV2(v2);
 		sys.addRenderer(new ImageComponentRenderer(this));
 	}
 
 	@Override
 	public void update(GameSpicedTea game, PlayingState play) {
-		if (this.owner != null) {
-			
-		}
 	}
 	
 	public TextureRegion getImage() {

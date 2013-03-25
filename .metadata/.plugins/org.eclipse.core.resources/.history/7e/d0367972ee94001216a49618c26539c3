@@ -1,0 +1,18 @@
+package tk.sirtwinkles.spicedtea.entities;
+
+import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.OrderedMap;
+
+public final class EntityFactory {
+	
+	
+	public static Entity buildEntity(String jsonConfig) {
+		JsonReader reader = new JsonReader();
+		OrderedMap<String, Object> base = reader.parse(jsonConfig);
+	}
+	
+	/**
+	 * This class should never be instantiated.
+	 */
+	private EntityFactory() {}
+}

@@ -1,6 +1,9 @@
 package tk.sirtwinkles.spicedtea.state;
 
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.components.PositionComponent;
+import tk.sirtwinkles.spicedtea.entities.Entity;
+import tk.sirtwinkles.spicedtea.entities.EntityFactory;
 import tk.sirtwinkles.spicedtea.sys.render.RenderingSystem;
 import tk.sirtwinkles.spicedtea.sys.render.Viewport;
 import tk.sirtwinkles.spicedtea.world.World;
@@ -12,7 +15,7 @@ public class PlayingState implements GameState {
 	private RenderingSystem render;
 	private World world;
 	private AssetManager manager;
-	
+
 	public PlayingState(AssetManager manager) {
 		this.manager = manager;
 	}
@@ -21,16 +24,22 @@ public class PlayingState implements GameState {
 	public void onEnterState(GameSpicedTea game) {
 		world = new World(manager);
 		render = new RenderingSystem(new Viewport(new Rectangle()), this);
+		// Build player
+		Entity ent = EntityFactory.buildEntity(
+				(String) manager.get("data/config/charecters/Player.json"),
+				manager, render);
+		world.getCurrent().addEntity(ent);
+		PositionComponent pc = (PositionComponent) ent.getComponent("position");
+		pc.x = world.getCurrent().getWidth() / 2;
+		pc.y = world.getCurrent().getHeight() / 2;
 	}
 
 	@Override
 	public void onLeaveState(GameSpicedTea game) {
-		//TODO Auto-generated method stub.
 	}
 
 	@Override
 	public boolean switchState(GameSpicedTea game) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -45,14 +54,13 @@ public class PlayingState implements GameState {
 
 	@Override
 	public GameState getNextState(GameSpicedTea game) {
-		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	public AssetManager getAssets() {
 		return manager;
 	}
-	
+
 	public World getWorld() {
 		return world;
 	}

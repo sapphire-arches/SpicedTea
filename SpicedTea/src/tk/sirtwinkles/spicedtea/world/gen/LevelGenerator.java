@@ -1,6 +1,7 @@
 package tk.sirtwinkles.spicedtea.world.gen;
 
 import tk.sirtwinkles.spicedtea.world.Level;
+import tk.sirtwinkles.spicedtea.world.tile.StairDirection;
 import tk.sirtwinkles.spicedtea.world.tile.Tile;
 import tk.sirtwinkles.spicedtea.world.tile.WallSide;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.*;
@@ -56,6 +57,12 @@ public class LevelGenerator {
 					break;
 				case DOOR:
 					tiles[x][y] = tsp.getDoorTile(x, y);
+					break;
+				case STAIR_UP:
+					tiles[x][y] = tsp.getStair(x, y, StairDirection.UP);
+					break;
+				case STAIR_DOWN:
+					tiles[x][y] = tsp.getStair(x, y, StairDirection.DOWN);
 					break;
 				default:
 					throw new java.lang.IllegalStateException("Tile at " + x

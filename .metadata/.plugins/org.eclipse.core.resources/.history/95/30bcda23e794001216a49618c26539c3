@@ -1,0 +1,5 @@
+package tk.sirtwinkles.spicedtea.components;
+
+public class PositionComponent extends Component {
+
+}

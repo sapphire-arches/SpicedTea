@@ -1,0 +1,6 @@
+package tk.sirtwinkles.spicedtea.loaders;
+
+import com.badlogic.gdx.assets.loaders.AssetLoader;
+
+public class StringAssetLoader extends AssetLoader<String, AssetLoaderParameters<String>>{
+}

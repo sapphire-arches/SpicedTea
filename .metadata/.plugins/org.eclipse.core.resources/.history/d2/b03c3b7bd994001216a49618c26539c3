@@ -1,0 +1,48 @@
+package tk.sirtwinkles.spicedtea.world.gen;
+
+import java.util.HashMap;
+
+import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.OrderedMap;
+
+import tk.sirtwinkles.spicedtea.world.tile.Tile;
+
+public class JSONTileSetProvider implements TileSetProvider {
+	class TileDescriptor {
+		int x, y, w, h;
+	}
+	HashMap<String, TileDescriptor> tileDesc;
+	
+	public JSONTileSetProvider(String config) {
+		JsonReader json = new JsonReader();
+		OrderedMap<String, Object> root = (OrderedMap<String, Object>) json.parse(config);
+		OrderedMap<String, Object> tiles = (OrderedMap<String, Object>) root.get("tiles");
+		for (String s : tiles.entries()) {
+			
+		}
+	}
+	
+	@Override
+	public Tile getBackgroundTile(int x, int y) {
+		
+	}
+
+	@Override
+	public Tile getFloorTile(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Tile getWallTile(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Tile getDoorTile(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

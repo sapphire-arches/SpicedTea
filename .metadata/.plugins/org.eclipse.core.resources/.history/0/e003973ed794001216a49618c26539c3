@@ -1,0 +1,45 @@
+package tk.sirtwinkles.spicedtea.loaders;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.assets.AssetLoaderParameters;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.AssetLoader;
+import com.badlogic.gdx.assets.loaders.FileHandleResolver;
+import com.badlogic.gdx.assets.loaders.SynchronousAssetLoader;
+import com.badlogic.gdx.utils.Array;
+
+public class StringAssetLoader extends SynchronousAssetLoader<String, AssetLoaderParameters<String>> {
+
+	@Override
+	public String load(AssetManager assetManager, String fileName,
+			AssetLoaderParameters<String> parameter) {
+		try {
+			FileReader f = new FileReader(Gdx.files.internal(fileName).file());
+			BufferedReader b = new BufferedReader(f);
+			while (b.ready()) {
+				b.readLine();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public Array<AssetDescriptor> getDependencies(String fileName,
+			AssetLoaderParameters<String> parameter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

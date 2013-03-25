@@ -1,0 +1,12 @@
+package tk.sirtwinkles.spicedtea.loaders;
+
+import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.assets.AssetLoaderParameters;
+import com.badlogic.gdx.assets.loaders.AssetLoader;
+import com.badlogic.gdx.assets.loaders.FileHandleResolver;
+import com.badlogic.gdx.assets.loaders.SynchronousAssetLoader;
+import com.badlogic.gdx.utils.Array;
+
+public class StringAssetLoader extends SynchronousAssetLoader<String, AssetLoaderParameters<String>> {
+	
+}

@@ -1,10 +1,7 @@
 package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve;
 
 import static tk.sirtwinkles.spicedtea.MathUtils.random;
-import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.BACKGROUND;
-import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.FLOOR;
-import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.WALL;
-
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.*;
 import java.util.ArrayList;
 
 import tk.sirtwinkles.spicedtea.world.gen.dungeon.Direction;
@@ -78,5 +75,7 @@ public class CarveDungeonGenerator {
 				}
 			}
 		}
+		
+		data[width / 2][height / 2] = STAIR_UP;
 	}
 }

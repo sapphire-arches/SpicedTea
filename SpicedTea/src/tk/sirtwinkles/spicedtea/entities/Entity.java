@@ -33,4 +33,8 @@ public class Entity {
 			c.update(game, ps);
 		}
 	}
+	
+	public String getID() {
+		return id;
+	}
 }

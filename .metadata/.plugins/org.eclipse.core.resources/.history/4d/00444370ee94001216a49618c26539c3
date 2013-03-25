@@ -1,0 +1,17 @@
+package tk.sirtwinkles.spicedtea.entities;
+
+import com.badlogic.gdx.utils.JsonReader;
+
+public final class EntityFactory {
+	
+	
+	public static Entity buildEntity(String jsonConfig) {
+		JsonReader reader = new JsonReader();
+		reader.parse(jsonConfig);
+	}
+	
+	/**
+	 * This class should never be instantiated.
+	 */
+	private EntityFactory() {}
+}

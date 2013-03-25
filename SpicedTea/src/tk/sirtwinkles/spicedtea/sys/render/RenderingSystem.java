@@ -41,10 +41,10 @@ public class RenderingSystem extends System {
 
 		gl10.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		context.begin(); // Begin rendering.
-		for (ImageComponentRenderer ren : componentRenderers) {
-			ren.render(context);
-		}
 		levelRen.render(context, view);
+		for (ImageComponentRenderer ren : componentRenderers) {
+			ren.render(context, view);
+		}
 		context.end();
 	}
 	

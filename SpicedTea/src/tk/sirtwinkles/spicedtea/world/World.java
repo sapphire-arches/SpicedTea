@@ -1,12 +1,17 @@
 package tk.sirtwinkles.spicedtea.world;
 
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.components.ImageComponent;
+import tk.sirtwinkles.spicedtea.components.PositionComponent;
+import tk.sirtwinkles.spicedtea.entities.Entity;
 import tk.sirtwinkles.spicedtea.state.PlayingState;
 import tk.sirtwinkles.spicedtea.world.gen.JSONTileSetProvider;
 import tk.sirtwinkles.spicedtea.world.gen.LevelGenerator;
 import tk.sirtwinkles.spicedtea.world.gen.TileSetProvider;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class World {
 	private Level current;
