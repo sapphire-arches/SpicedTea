@@ -8,3 +8,13 @@
 1364164356720	Delete elements
 1364167074735	Copy compilation unit
 1364167112650	Copy compilation unit
+1364180304454	Rename local variable 't'
+1364232232683	Rename local variable 's'
+1364255193660	Move compilation unit
+1364256211282	Delete element
+1364298668536	Rename local variable 'toAdd'
+1364314501942	Move compilation unit
+1364318401899	Rename local variable 'toExtend'
+1364341090195	Rename field 'dist'
+1364341607801	Rename local variable 'itr'
+1364399882061	Extract method 'calculateDistances'

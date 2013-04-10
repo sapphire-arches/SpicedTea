@@ -1,6 +1,6 @@
 package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve;
 
-import tk.sirtwinkles.spicedtea.world.gen.dungeon.Direction;
+import tk.sirtwinkles.spicedtea.world.Direction;
 
 public abstract class Feature {
 	public abstract boolean generate(int x, int y, int[][] data, Direction dir);

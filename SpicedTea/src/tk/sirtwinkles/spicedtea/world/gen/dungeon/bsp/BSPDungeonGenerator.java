@@ -1,7 +1,9 @@
 package tk.sirtwinkles.spicedtea.world.gen.dungeon.bsp;
 
 import static tk.sirtwinkles.spicedtea.MathUtils.random;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.BACKGROUND;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.FLOOR;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.WALL;
 import static tk.sirtwinkles.spicedtea.world.gen.dungeon.LineUtils.drawZigZag;
 import static tk.sirtwinkles.spicedtea.world.gen.dungeon.LineUtils.isValidLine;
 
@@ -15,6 +17,21 @@ public class BSPDungeonGenerator {
 		BSPTree bsp = BSPTree.buildTree(width, height, 8);
 
 		drawTree(bsp, depth, data);
+		//Cleanup.
+		for (int x = 1; x < width - 1; ++x) {
+			for (int y = 1; y < height - 1; ++y) {
+				if (data[x][y] == FLOOR) {
+					xxLoop: for (int xx = -1; xx <= 1; ++xx) {
+						for (int yy = -1; yy <= 1; ++yy) {
+							if (data[x + xx][y + yy] == BACKGROUND) {
+								data[x][y] = WALL;
+								break xxLoop;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	private static void drawTree(BSPTree bsp, int depth, int[][] data) {

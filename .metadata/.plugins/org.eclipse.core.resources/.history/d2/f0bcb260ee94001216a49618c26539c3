@@ -1,9 +1,0 @@
-package tk.sirtwinkles.spicedtea.entities;
-
-public final class EntityFactory {
-	
-	
-	public static Entity m
-	
-	private EntityFactory() {}
-}

@@ -15,26 +15,25 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
-		<item value="835" key="dialogWidth"/>
-		<item value="462" key="dialogHeight"/>
+		<item value="847" key="dialogWidth"/>
+		<item value="474" key="dialogHeight"/>
 		<list key="orderedProviders">
-			<item value="org.eclipse.ui.editors"/>
 		</list>
 		<list key="textArray">
-			<item value="featureco"/>
 		</list>
 		<list key="orderedElements">
-			<item value="org.eclipse.jdt.ui.CompilationUnitEditor"/>
 		</list>
 		<list key="textEntries">
-			<item value="1"/>
 		</list>
 	</section>
 	<section name="WorkbenchPreferenceDialogSettings">
-		<item value="82" key="DIALOG_Y_ORIGIN"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
 		<item value="286" key="DIALOG_X_ORIGIN"/>
 	</section>
 	<section name="NewWizardAction">
+		<item value="org.eclipse.jdt.ui.wizards.NewClassCreationWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+		</list>
 	</section>
 	<section name="InstallationDialogSettings">
 		<item value="684" key="DIALOG_WIDTH"/>

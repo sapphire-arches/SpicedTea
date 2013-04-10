@@ -5,7 +5,7 @@ import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.BACKGROUND;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.DOOR;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.FLOOR;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.WALL;
-import tk.sirtwinkles.spicedtea.world.gen.dungeon.Direction;
+import tk.sirtwinkles.spicedtea.world.Direction;
 
 public class FeatureCorridor extends Feature {
 	public static final int WIDTH = 3;

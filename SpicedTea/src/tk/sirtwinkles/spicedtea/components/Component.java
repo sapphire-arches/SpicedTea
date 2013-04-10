@@ -1,5 +1,7 @@
 package tk.sirtwinkles.spicedtea.components;
 
+import com.badlogic.gdx.utils.OrderedMap;
+
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
 import tk.sirtwinkles.spicedtea.entities.Entity;
 import tk.sirtwinkles.spicedtea.state.PlayingState;
@@ -8,8 +10,8 @@ public abstract class Component {
 	Entity owner;
 	String id;
 	
-	public Component(String id) {
-		this.id = id;
+	public Component(OrderedMap<String, Object> config) {
+		this.id = (String) config.get("type");
 	}
 	
 	public void setOwner(Entity owner) {
@@ -29,4 +31,8 @@ public abstract class Component {
 	 * @param game The game.
 	 */
 	public abstract void update(GameSpicedTea game, PlayingState play);
+	/**
+	 * Called to deconstruct a component.
+	 */
+	public abstract void destroy(GameSpicedTea game, PlayingState play);
 }

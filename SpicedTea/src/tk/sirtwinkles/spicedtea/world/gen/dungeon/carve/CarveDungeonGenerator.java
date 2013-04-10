@@ -4,19 +4,30 @@ import static tk.sirtwinkles.spicedtea.MathUtils.random;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.*;
 import java.util.ArrayList;
 
-import tk.sirtwinkles.spicedtea.world.gen.dungeon.Direction;
+import tk.sirtwinkles.spicedtea.world.Direction;
+import tk.sirtwinkles.spicedtea.world.Level;
+import tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.Room;
+import tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.RoomFeature;
+import tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.RoomFeatureFactory;
+import tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.RoomPopulator;
 
 public class CarveDungeonGenerator {
 	private static ArrayList<Feature> FEATURES;
+	private static ArrayList<Room> rooms;
 
 	static {
 		// TODO: load this from JSON
 		FEATURES = new ArrayList<Feature>();
 		//FEATURES.add(new FeatureCorridor());
 		FEATURES.add(new FeatureRoom());
+		
+		rooms = new ArrayList<Room>();
 	}
 
-	public static void generate(int width, int height, int depth, int[][] data) {
+	public static void generate(int width, int height, int depth, int[][] data, Level in) {
+		//Init stuff
+		rooms.clear();
+		//Make the center rom
 		genCenterRoom(width, height, data);
 		// Try to generate features.
 		int rx, ry;
@@ -35,6 +46,23 @@ public class CarveDungeonGenerator {
 				}
 			}
 		}
+		//Add some random doors
+		FeatureExtraDoor moarDoors = new FeatureExtraDoor();
+		for (int i = 0; i < 4 * width * height; ++i) {
+			rx = 1 + random.nextInt(width - 2);
+			ry = 1 + random.nextInt(height - 2);
+			if (data[rx][ry] == WALL) {
+				if (data[rx - 1][ry] == FLOOR) {
+					moarDoors.generate(rx, ry, data, Direction.E);
+				} else if (data[rx + 1][ry] == FLOOR) {
+					moarDoors.generate(rx, ry, data, Direction.W);
+				} else if (data[rx][ry + 1] == FLOOR) {
+					moarDoors.generate(rx, ry, data, Direction.N);
+				} else if (data[rx][ry - 1] == FLOOR) {
+					moarDoors.generate(rx, ry, data, Direction.S);
+				}
+			}
+		}
 		//Cleanup.
 		for (int x = 1; x < width - 1; ++x) {
 			for (int y = 1; y < height - 1; ++y) {
@@ -50,6 +78,19 @@ public class CarveDungeonGenerator {
 				}
 			}
 		}
+		//Set one of the rooms to be the downstairs.
+		{
+			Room r;
+			do {
+				r = rooms.get(random.nextInt(rooms.size()));
+			} while (r.feature != null);
+			r.feature = "StairDown";
+		}
+		RoomPopulator.populateRooms(depth, rooms, data, in);
+	}
+	
+	public static void addRoom(Room r) {
+		rooms.add(r);
 	}
 
 	private static void genRandomFeatures(int rx, int ry, Direction dir,
@@ -62,8 +103,8 @@ public class CarveDungeonGenerator {
 
 	private static void genCenterRoom(int width, int height, int[][] data) {
 		// Random constants 4 days
-		int w = width / 5;
-		int h = height / 5;
+		int w = 7;
+		int h = 7;
 		int sx = width / 2 - w / 2;
 		int sy = height / 2 - h / 2;
 		for (int x = sx; x < sx + w; ++x) {
@@ -76,6 +117,10 @@ public class CarveDungeonGenerator {
 			}
 		}
 		
-		data[width / 2][height / 2] = STAIR_UP;
+		//data[width / 2][height / 2] = STAIR_UP;
+		
+		Room r = new Room(sx, sy, w, h);
+		r.feature = "StairUp";
+		rooms.add(r);
 	}
 }

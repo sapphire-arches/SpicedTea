@@ -12,7 +12,9 @@ public class MainActivity extends AndroidApplication {
         
         AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
         cfg.useGL20 = false;
+        int width = getWindowManager().getDefaultDisplay().getWidth();
+        int height = getWindowManager().getDefaultDisplay().getHeight();
         
-        initialize(new GameSpicedTea(), cfg);
+        initialize(new GameSpicedTea(width, height), cfg);
     }
 }

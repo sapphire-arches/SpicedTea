@@ -1,9 +1,0 @@
-package tk.sirtwinkles.spicedtea.world.tile;
-
-public abstract class Tile {
-	private String id;
-	
-	public Tile(String id) {
-		this.id = id;
-	}
-}

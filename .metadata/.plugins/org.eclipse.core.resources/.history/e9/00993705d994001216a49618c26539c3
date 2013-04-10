@@ -1,7 +1,0 @@
-package tk.sirtwinkles.spicedtea.world.tile;
-
-import tk.sirtwinkles.spicedtea.world.tile.virtual.AbstractFloor;
-
-public class JSONFloorTile extends AbstractFloor {
-
-}

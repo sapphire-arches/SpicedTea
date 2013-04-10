@@ -22,6 +22,11 @@ public class Point implements Poolable {
 	public void reset() {
 		// Nothing to do here.
 	}
+	
+	@Override
+	public String toString() {
+		return "Point: " + x + " " + y;
+	}
 
 	/**
 	 * Static pool stuff.

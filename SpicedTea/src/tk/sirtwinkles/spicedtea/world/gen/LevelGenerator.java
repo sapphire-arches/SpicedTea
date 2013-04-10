@@ -1,6 +1,10 @@
 package tk.sirtwinkles.spicedtea.world.gen;
 
+import tk.sirtwinkles.spicedtea.components.PositionComponent;
+import tk.sirtwinkles.spicedtea.entities.Entity;
+import tk.sirtwinkles.spicedtea.entities.EntityFactory;
 import tk.sirtwinkles.spicedtea.world.Level;
+import tk.sirtwinkles.spicedtea.world.gen.dungeon.DungeonGenerator;
 import tk.sirtwinkles.spicedtea.world.tile.StairDirection;
 import tk.sirtwinkles.spicedtea.world.tile.Tile;
 import tk.sirtwinkles.spicedtea.world.tile.WallSide;
@@ -22,12 +26,12 @@ public class LevelGenerator {
 	 * @return
 	 */
 	public static Level create(int width, int height, int depth,
-			TileSetProvider tsp) {
+			TileSetProvider tsp, Entity player) {
 		// TODO: implement depth.
 		Level tr = new Level(width, height);
 		int[][] data = new int[width][height];
 
-		DungeonGenerator.generate(width, height, depth, data);
+		DungeonGenerator.generate(width, height, depth, data, tr);
 
 		for (int x = 0; x < width; ++x) {
 			if (data[x][0] == FLOOR)
@@ -71,9 +75,15 @@ public class LevelGenerator {
 			}
 		}
 
+		tr.addEntity(player);
+		PositionComponent pc = (PositionComponent) player.getComponent("position");
+		pc.x = tr.getWidth() / 2 - 1;
+		pc.y = tr.getHeight() / 2;
+		tr.floodFillVisiblity(tr.getWidth() / 2 - 1, tr.getHeight() / 2);
+
 		return tr;
 	}
-
+/*
 	private static char NORTH = 0x01 << 0;
 	private static char SOUTH = 0x01 << 1;
 	private static char EAST = 0x01 << 2;
@@ -141,5 +151,5 @@ public class LevelGenerator {
 		// throw new IllegalArgumentException("Unknown sides state: " +
 		// (int)sides);
 		return null;
-	}
+	}*/
 }

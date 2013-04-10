@@ -3,6 +3,7 @@ package tk.sirtwinkles.spicedtea;
 import tk.sirtwinkles.spicedtea.input.InputQueue;
 import tk.sirtwinkles.spicedtea.state.AssetLoadState;
 import tk.sirtwinkles.spicedtea.state.GameState;
+import tk.sirtwinkles.spicedtea.state.PlayingState;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -28,6 +29,10 @@ public class GameSpicedTea implements ApplicationListener {
 	 * Hacks to make initialisation happen in init.
 	 */
 	private int dontusethiswidth,dontusethisheight;
+	/**
+	 * Input object.
+	 */
+	private InputQueue input;
 	
 	/**
 	 * Makes a new spiced tea game object.
@@ -44,7 +49,8 @@ public class GameSpicedTea implements ApplicationListener {
 		overflowTime = 0;
 		context = new GraphicsContext();
 		context.onResize(dontusethiswidth, dontusethisheight);
-		Gdx.input.setInputProcessor(new InputQueue()); // register input
+		this.input = new InputQueue();
+		Gdx.input.setInputProcessor(input); // register input
 		currentState = new AssetLoadState();
 		currentState.onEnterState(this);
 	}
@@ -89,5 +95,13 @@ public class GameSpicedTea implements ApplicationListener {
 	
 	public GraphicsContext getContext() {
 		return context;
+	}
+	
+	public InputQueue getInput() {
+		return input;
+	}
+
+	public GameState getCurrentState() {
+		return currentState;
 	}
 }

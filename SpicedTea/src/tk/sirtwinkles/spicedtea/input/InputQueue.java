@@ -1,6 +1,7 @@
 package tk.sirtwinkles.spicedtea.input;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 import com.badlogic.gdx.InputProcessor;
 
@@ -69,17 +70,13 @@ public class InputQueue implements InputProcessor {
 	public boolean needTouchProcessing() {
 		return touchEvents.size() > 0;
 	}
-
+	
 	/**
-	 * Queries the touch event queue for events.
-	 * @return The first event, or null if there are no events.
+	 * Gets the touch event queue.
+	 * @return The touch event queue.
 	 */
-	public TouchEvent nextTouchEvent() {
-		if (touchEvents.size() > 0) {
-			return touchEvents.removeFirst();
-		} else {
-			return null;
-		}
+	public LinkedList<TouchEvent> getTouchEvents() {
+		return touchEvents;
 	}
 
 	/**
@@ -89,16 +86,17 @@ public class InputQueue implements InputProcessor {
 	public boolean needKeyProcessing() {
 		return keyEvents.size() > 0;
 	}
-
+	
 	/**
-	 * Queries the key event queue for events.
-	 * @return The first event, or null if there are no events.
+	 * Gets the key event queue.
+	 * @return The key event queue.
 	 */
-	public KeyEvent nextKeyEvent() {
-		if (keyEvents.size() > 0) {
-			return keyEvents.removeFirst();
-		} else {
-			return null;
-		}
+	public LinkedList<KeyEvent> getKeyEvents() {
+		return keyEvents;
+	}
+
+	public void clearQueues() {
+		keyEvents.clear();
+		touchEvents.clear();
 	}
 }

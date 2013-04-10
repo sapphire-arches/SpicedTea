@@ -5,11 +5,12 @@ import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.BACKGROUND;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.DOOR;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.FLOOR;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.WALL;
-import tk.sirtwinkles.spicedtea.world.gen.dungeon.Direction;
+import tk.sirtwinkles.spicedtea.world.Direction;
+import tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.Room;
 
 public class FeatureRoom extends Feature {
 
-	private static final int MIN_SIZE = 4;
+	private static final int MIN_SIZE = 6;
 	private static final int MAX_SIZE = 10;
 
 	@Override
@@ -40,9 +41,9 @@ public class FeatureRoom extends Feature {
 				rx+rw >= data.length || ry+rh >= data[0].length) {
 			return false;
 		}
-		int notBlank = test(rx, ry, rw, rh, data, BACKGROUND);
-		int notWall = test(rx, ry, rh, rh, data, WALL);
-		int testres = (rw * rh) - notBlank - notWall;
+		int floorCount = (rw * rh) - test(rx, ry, rw, rh, data, FLOOR);
+		int doorCount = (rw * rh) - test(rx, ry, rw, rh, data, DOOR);
+		int testres = floorCount + doorCount;
 		if (testres == 0) {
 			for (int xx = rx; xx < rx + rw; ++xx) {
 				for (int yy = ry; yy < ry + rh; ++yy) {
@@ -55,6 +56,7 @@ public class FeatureRoom extends Feature {
 				}
 			}
 			data[x][y] = DOOR;
+			CarveDungeonGenerator.addRoom(new Room(rx, ry, rw, rh));
 			return true;
 		}
 		return false;

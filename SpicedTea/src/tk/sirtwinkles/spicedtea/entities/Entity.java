@@ -3,6 +3,8 @@ package tk.sirtwinkles.spicedtea.entities;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import com.badlogic.gdx.Gdx;
+
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
 import tk.sirtwinkles.spicedtea.components.Component;
 import tk.sirtwinkles.spicedtea.state.PlayingState;
@@ -20,6 +22,10 @@ public class Entity {
 	
 	public void addComponent(Component comp) {
 		comp.setOwner(this);
+		if (getComponent(comp.getID()) != null) {
+			System.err.println("Duplicate component with id: " + comp.getID());
+			Gdx.app.exit();
+		}
 		components.add(comp);
 		compMap.put(comp.getID().toLowerCase(), comp);
 	}
@@ -36,5 +42,11 @@ public class Entity {
 	
 	public String getID() {
 		return id;
+	}
+
+	public void destroy(GameSpicedTea game, PlayingState play) {
+		for (Component c : components) {
+			c.destroy(game, play);
+		}
 	}
 }

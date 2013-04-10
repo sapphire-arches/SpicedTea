@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetLoaderParameters;
 import com.badlogic.gdx.assets.AssetManager;
@@ -21,8 +23,11 @@ public class StringAssetLoader extends SynchronousAssetLoader<String, AssetLoade
 	@Override
 	public String load(AssetManager assetManager, String fileName,
 			AssetLoaderParameters<String> parameter) {
+		if (Gdx.app.getType() == ApplicationType.Desktop) {
+			fileName = "./bin/" + fileName;
+		}
 		try {
-			FileReader f = new FileReader(resolve(fileName).file());
+			FileReader f = new FileReader(resolve(Gdx.files.getLocalStoragePath() + fileName).file());
 			BufferedReader b = new BufferedReader(f);
 			StringBuilder sb = new StringBuilder();
 			while (b.ready()) {

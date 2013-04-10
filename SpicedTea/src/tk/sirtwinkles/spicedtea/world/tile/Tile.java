@@ -1,6 +1,10 @@
 package tk.sirtwinkles.spicedtea.world.tile;
 
-public abstract class Tile {
+import tk.sirtwinkles.spicedtea.entities.Entity;
+import tk.sirtwinkles.spicedtea.state.PlayingState;
+import tk.sirtwinkles.spicedtea.world.Level;
+
+public abstract class Tile extends Entity {
 	private String id;
 	/**
 	 * Image coordinates in terrain.png
@@ -10,7 +14,8 @@ public abstract class Tile {
 	/**
 	 * Position in the world;
 	 */
-	private int x, y;
+	protected int x;
+	protected int y;
 
 	/**
 	 * Constructs a new tile object.
@@ -27,6 +32,7 @@ public abstract class Tile {
 	 *            Y position in the level.
 	 */
 	public Tile(String id, int imgX, int imgY, int x, int y) {
+		super("id");
 		this.id = id;
 		this.imgX = imgX;
 		this.imgY = imgY;
@@ -41,4 +47,9 @@ public abstract class Tile {
 	public int getImageY() {
 		return imgY;
 	}
+	
+	public abstract void onEntityStep(Entity step, Level in);
+	public abstract boolean isPassable(Entity ent, Level in);
+	public abstract boolean isPathable(Entity ent, Level in);
+	public abstract TileClass getTileClass();
 }

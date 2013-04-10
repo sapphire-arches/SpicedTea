@@ -1,25 +1,39 @@
 package tk.sirtwinkles.spicedtea.world.tile.virtual;
 
+import tk.sirtwinkles.spicedtea.entities.Entity;
+import tk.sirtwinkles.spicedtea.world.Level;
 import tk.sirtwinkles.spicedtea.world.tile.Tile;
+import tk.sirtwinkles.spicedtea.world.tile.TileClass;
 import tk.sirtwinkles.spicedtea.world.tile.WallSide;
 
+public abstract class AbstractWall extends Tile {
 
-public class AbstractWall extends Tile {
-
-	private WallSide side;
-	private int baseImgX, baseImgY;
-	
-	public AbstractWall(String id, int baseImgX, int baseImgY, int x, int y) {
+	public AbstractWall(String id, int imgX, int imgY, int x, int y) {
 		super(id, 0, 0, x, y);
-		this.baseImgX = baseImgX; this.baseImgY = baseImgY;
-		setImage();
+		this.imgX = imgX;
+		this.imgY = imgY;
 	}
 	public int getImageX() {
 		return imgX;
 	}
 	
-	private void setImage() {
-		imgX = baseImgX;
-		imgY = baseImgY;
+	@Override
+	public void onEntityStep(Entity step, Level in) {
+		//Nothing to do
+	}
+	
+	@Override
+	public boolean isPassable(Entity ent, Level in) {
+		return false;
+	}
+	
+	@Override
+	public boolean isPathable(Entity ent, Level in) {
+		return false;
+	}
+	
+	@Override
+	public TileClass getTileClass() {
+		return TileClass.WALL;
 	}
 }

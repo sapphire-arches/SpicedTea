@@ -1,9 +1,0 @@
-package tk.sirtwinkles.spicedtea.world.gen;
-
-public interface TileSetProvider {
-	public static final int BACKGROUND = 0;
-	public static final int FLOOR = 1;
-	public static final int WALL = 2;
-	
-	
-}
