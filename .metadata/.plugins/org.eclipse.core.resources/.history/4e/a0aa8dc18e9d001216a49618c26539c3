@@ -1,0 +1,15 @@
+package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room;
+
+import java.util.ArrayList;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.*;
+
+public final class RoomPopulator {
+	
+	public void populateRooms(int level, ArrayList<Room> rooms, int[][] data) {
+		for (Room r : rooms) {
+			
+		}
+	}
+
+	private RoomPopulator() {} //Never instantiate.
+}

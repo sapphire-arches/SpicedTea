@@ -1,0 +1,5 @@
+{
+    "type":"image",
+    "depends":[],
+    "class":"tk.sirtwinkles.spicedtea.components.ImageComponent",
+}

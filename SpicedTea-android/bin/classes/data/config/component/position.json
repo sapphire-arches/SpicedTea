@@ -1,0 +1,5 @@
+{
+    "type":"position",
+    "depends":[],
+    "class":"tk.sirtwinkles.spicedtea.components.PositionComponent",
+}

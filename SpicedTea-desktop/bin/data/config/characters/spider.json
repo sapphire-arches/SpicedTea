@@ -1,0 +1,11 @@
+{
+    "name":"spider",
+    "instance.type":"multiinstance",
+    "components":[
+          {"type":"image", "x":1,"y":0}
+        , {"type":"position"}
+        , {"type":"mover"}
+        , {"type":"ai.driver"}
+        , {"type":"image.renderer"}
+    ]
+}

@@ -1,0 +1,12 @@
+package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room;
+
+import tk.sirtwinkles.spicedtea.world.gen.TileSetProvider;
+
+public class RoomFeatureStairUp implements RoomFeature {
+
+	@Override
+	public void generate(Room in, int[][] data) {
+		data[in.x + in.w / 2][in.y + in.h / 2] = TileSetProvider.STAIR_UP;
+	}
+
+}

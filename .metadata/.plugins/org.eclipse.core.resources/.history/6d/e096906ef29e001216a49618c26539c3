@@ -1,0 +1,17 @@
+package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room;
+
+import static tk.sirtwinkles.spicedtea.MathUtils.random;
+
+public class GenericRoom implements RoomFeature {
+
+	@Override
+	public void generate(Room in, int[][] data) {
+		for (int x = in.x; x < in.x + in.w; ++x) {
+			for (int y = in.y; y < in.y + in.h; ++y) {
+				if (random.nextFloat() < 0.05) {
+					
+				}
+			}
+		}
+	}
+}

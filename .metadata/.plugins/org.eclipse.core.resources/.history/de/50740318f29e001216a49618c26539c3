@@ -1,0 +1,9 @@
+package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room;
+
+public class GenericRoom implements RoomFeature {
+
+	@Override
+	public void generate(Room in, int[][] data) {
+		
+	}
+}

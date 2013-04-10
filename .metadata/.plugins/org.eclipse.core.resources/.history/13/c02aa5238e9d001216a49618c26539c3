@@ -1,0 +1,58 @@
+package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room;
+
+import java.util.HashMap;
+
+import tk.sirtwinkles.spicedtea.Globals;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Application.ApplicationType;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.OrderedMap;
+
+@SuppressWarnings({"unchecked", "rawtypes"})
+public final class RoomFeatureFactory {
+	static HashMap<String, Class> templates;
+
+	public static RoomFeature getFeature(String name) {
+		return templates.get(name.toLowerCase())
+	}
+	
+	public static void buildTemplates() {
+		final String basePath = "data/config/rooms/";
+		String searchPath = basePath;
+		if (Gdx.app.getType() == ApplicationType.Desktop) {
+			searchPath = "./bin/" + basePath;
+		}
+		JsonReader reader = new JsonReader();
+		ClassLoader loader = ClassLoader.getSystemClassLoader();
+		System.out.println("Begin parsing components");
+		for (FileHandle f : Gdx.files.internal(searchPath).list()) {
+			if (!f.extension().equalsIgnoreCase("json")) {
+				continue;
+			}
+			String cfgString = Globals.assets.get(basePath + f.name());
+			OrderedMap<String, Object> config = (OrderedMap<String, Object>) reader
+					.parse(cfgString);
+			
+			String type = ((String) config.get("type")).toLowerCase();
+			String className = (String) config.get("generator");
+			
+			try {
+				templates.put(type, loader.loadClass(className));
+				Class c = templates.get(type);
+				if (!RoomFeature.class.isAssignableFrom(c)) {
+					throw new Exception("Generator for type " + type + " is not a subclass of RoomFeature");
+				}
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				System.exit(1);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.exit(1);
+			}
+		}
+	}
+	
+	private RoomFeatureFactory() {}
+}

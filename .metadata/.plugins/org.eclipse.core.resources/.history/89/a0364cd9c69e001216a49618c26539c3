@@ -1,0 +1,20 @@
+package tk.sirtwinkles.spicedtea.components;
+
+import tk.sirtwinkles.spicedtea.entities.Entity;
+import tk.sirtwinkles.spicedtea.sys.render.DirectedImageComponentRenderer;
+
+import com.badlogic.gdx.utils.OrderedMap;
+
+public class DirectedImageRenderComponent extends RenderComponent {
+
+	public DirectedImageRenderComponent(OrderedMap<String, Object> config) {
+		super(new DirectedImageComponentRenderer(), config);
+	}
+
+	@Override
+	public void setOwner(Entity owner) {
+		super.setOwner(owner);
+		DirectedImageComponentRenderer cpt = (DirectedImageComponentRenderer)this.ren;
+		cpt.setComponent((ImageSetComponent) owner.getComponent("image.set:"));
+	}
+}

@@ -1,0 +1,13 @@
+{
+    "name":"RedBrick",
+    "description":"A red brick tileset.",
+    "tiles":{
+          "background":{"x":0,"y":0,"width":8,"height":2}
+        , "floor"     :{"x":0,"y":2,"width":4,"height":4}
+        , "wall"      :{"x":4,"y":2,"width":1,"height":1}
+        , "doorClosed":{"x":5,"y":2,"width":1,"height":1}
+        , "doorOpen"  :{"x":5,"y":3,"width":1,"height":1}
+        , "upstair"   :{"x":6,"y":2,"width":1,"height":1}
+        , "downstair" :{"x":7,"y":2,"width":1,"height":1}
+    }
+}

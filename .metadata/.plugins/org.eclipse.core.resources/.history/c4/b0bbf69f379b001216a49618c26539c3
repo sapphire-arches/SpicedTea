@@ -1,0 +1,6 @@
+package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve;
+
+public interface RoomFeature {
+	public static final int STAIRUP = 0;
+	public static final int STAIRDOWN = 0;
+}
