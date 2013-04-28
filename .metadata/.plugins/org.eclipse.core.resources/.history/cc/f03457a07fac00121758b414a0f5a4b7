@@ -1,0 +1,5 @@
+{
+    "type":"inventory",
+    "depends":["position"],
+    "class":"tk.sirtwinkles.spicedtea.components.MoverComponent",
+}

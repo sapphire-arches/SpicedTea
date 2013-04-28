@@ -1,0 +1,15 @@
+package tk.sirtwinkles.spicedtea.sys.combat;
+
+import tk.sirtwinkles.spicedtea.entities.Entity;
+
+public class Attack {
+	Entity instigator;
+	Entity target;
+	
+	public Attack(Entity instigator, Entity target) {
+		this.instigator = instigator;
+		this.target = target;
+	}
+	
+	
+}

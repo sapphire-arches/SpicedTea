@@ -93,6 +93,7 @@ public final class EntityFactory {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
+			e.getCause().printStackTrace();
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 			System.err.println("Known constructors:");

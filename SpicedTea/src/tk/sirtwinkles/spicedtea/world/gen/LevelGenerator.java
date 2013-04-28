@@ -75,7 +75,7 @@ public class LevelGenerator {
 			}
 		}
 
-		tr.addEntity(player);
+		tr.addEntity(player, false);
 		PositionComponent pc = (PositionComponent) player.getComponent("position");
 		pc.x = tr.getWidth() / 2 - 1;
 		pc.y = tr.getHeight() / 2;

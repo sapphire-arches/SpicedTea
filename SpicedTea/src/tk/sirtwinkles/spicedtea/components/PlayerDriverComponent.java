@@ -2,30 +2,27 @@ package tk.sirtwinkles.spicedtea.components;
 
 import static tk.sirtwinkles.spicedtea.sys.render.LevelRenderer.TILE_SIZE;
 import static tk.sirtwinkles.spicedtea.sys.render.RenderingSystem.PXL_SCALE;
+import static tk.sirtwinkles.spicedtea.MathUtils.abs;
 
-import java.awt.geom.PathIterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
-import java.util.Queue;
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.utils.OrderedMap;
-import com.badlogic.gdx.utils.TimeUtils;
 
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.entities.Entity;
 import tk.sirtwinkles.spicedtea.input.InputQueue;
 import tk.sirtwinkles.spicedtea.input.KeyEvent;
 import tk.sirtwinkles.spicedtea.input.TouchEvent;
-import tk.sirtwinkles.spicedtea.input.TouchEvent.EventType;
 import tk.sirtwinkles.spicedtea.state.InventoryViewState;
 import tk.sirtwinkles.spicedtea.state.PlayingState;
+import tk.sirtwinkles.spicedtea.sys.combat.Attack;
 import tk.sirtwinkles.spicedtea.sys.render.Viewport;
 import tk.sirtwinkles.spicedtea.world.Direction;
 import tk.sirtwinkles.spicedtea.world.Level;
 import tk.sirtwinkles.spicedtea.world.Point;
-import tk.sirtwinkles.spicedtea.world.util.Pather;
+
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.OrderedMap;
 
 public class PlayerDriverComponent extends Component {
 	private LinkedList<Point> p;
@@ -42,11 +39,11 @@ public class PlayerDriverComponent extends Component {
 	public void update(GameSpicedTea game, PlayingState play) {
 		if (performedActionLastUpdate) {
 			performedActionLastUpdate = false;
-			//We have already upddated.
+			// We have already upddated.
 			return;
 		}
 		InputQueue iq = game.getInput();
-		//Keyboard
+		// Keyboard
 		ListIterator<KeyEvent> keyitr = iq.getKeyEvents().listIterator();
 		MoverComponent mc = (MoverComponent) owner.getComponent("mover");
 		while (!mc.hasQueuedMoves() && keyitr.hasNext()) {
@@ -55,36 +52,42 @@ public class PlayerDriverComponent extends Component {
 				switch (evnt.getC()) {
 				case Input.Keys.UP:
 				case Input.Keys.W:
-					mc.add(Direction.N);
+					attackOrMove(Direction.N, play);
 					keyitr.remove();
 					break;
 				case Input.Keys.DOWN:
 				case Input.Keys.S:
-					mc.add(Direction.S);
+					attackOrMove(Direction.S, play);
 					keyitr.remove();
 					break;
 				case Input.Keys.RIGHT:
 				case Input.Keys.D:
-					mc.add(Direction.E);
+					attackOrMove(Direction.E, play);
 					keyitr.remove();
 					break;
 				case Input.Keys.LEFT:
 				case Input.Keys.A:
-					mc.add(Direction.W);
+					attackOrMove(Direction.W, play);
 					keyitr.remove();
 					break;
-				//TODO: Make the inventory system work.
-				//case Input.Keys.E:
-				//	displayInventory(play);
-				//	break;
+				case Input.Keys.SPACE:
+					// Do nothing, but pretend we have.
+					performedActionLastUpdate = true;
+					break;
+				// TODO: Make the inventory system work.
+				// case Input.Keys.E:
+				// displayInventory(play);
+				// break;
 				}
 			}
 		}
-		//Touch
+		// Touch
 		ListIterator<TouchEvent> touchitr = iq.getTouchEvents().listIterator();
 		while (touchitr.hasNext()) {
 			TouchEvent evnt = touchitr.next();
-			if (evnt.getType() == TouchEvent.EventType.PRESSED && evnt.getPointer() == 0 && !handledPress && ! mc.hasQueuedMoves()) {
+			if (evnt.getType() == TouchEvent.EventType.PRESSED
+					&& evnt.getPointer() == 0 && !handledPress
+					&& !mc.hasQueuedMoves()) {
 				PositionComponent pc = (PositionComponent) this.owner
 						.getComponent("position");
 				handledPress = true;
@@ -96,20 +99,71 @@ public class PlayerDriverComponent extends Component {
 				final int ty = (int) (evnt.getY() / TILE_SIZE / PXL_SCALE);
 				Point start = Point.getPoint(pc.x, pc.y);
 				Point end = Point.getPoint(tbx + tx, tby + ty);
-				goal.x = end.x; goal.y = end.y;
-				mc.path(start, end, play.getWorld().getCurrent());
+				goal.x = end.x;
+				goal.y = end.y;
+				if (abs(goal.x - start.x) + abs(goal.y - start.y) <= 1) {
+					Direction dir = null;
+					if (goal.x - start.x == 1) {
+						dir = Direction.E;
+					} else if (goal.x - start.x == -1) {
+						dir = Direction.W;
+					} else if (goal.y - start.y == 1) {
+						dir = Direction.S;
+					} else if (goal.y - start.y == -1) {
+						dir = Direction.N;
+					}
+					attackOrMove(dir, play);
+				} else {
+					mc.path(start, end, play.getWorld().getCurrent());
+				}
 			}
 			if (evnt.getType() == TouchEvent.EventType.RELEASED && handledPress) {
 				handledPress = false;
 			}
 		}
-		performedActionLastUpdate |= mc.hasQueuedMoves(); 
+		performedActionLastUpdate |= mc.hasQueuedMoves();
 	}
-	
+
+	private void attackOrMove(Direction w, PlayingState play) {
+		PositionComponent pc = (PositionComponent) owner
+				.getComponent("position");
+		int x = pc.x;
+		int y = pc.y;
+		switch (w) {
+		case N:
+			--y;
+			break;
+		case S:
+			++y;
+			break;
+		case E:
+			++x;
+			break;
+		case W:
+			--x;
+			break;
+		}
+		Level l = play.getWorld().getCurrent();
+
+		for (Entity ent : l.getEntities()) {
+			PositionComponent epos = (PositionComponent) ent
+					.getComponent("position");
+			if (epos != null) {
+				if (epos.x == x && epos.y == y) {
+					play.getCombatSystem().queueAttack(
+							new Attack(this.owner, ent));
+				}
+			}
+		}
+
+		MoverComponent mc = (MoverComponent) owner.getComponent("mover");
+		mc.add(w);
+	}
+
 	public Point getGoal() {
 		return goal;
 	}
-	
+
 	public boolean getPerformedActionLastUpdate() {
 		return performedActionLastUpdate;
 	}
@@ -120,6 +174,6 @@ public class PlayerDriverComponent extends Component {
 
 	@Override
 	public void destroy(GameSpicedTea game, PlayingState play) {
-		//Nothing to do here.
+		// Nothing to do here.
 	}
 }

@@ -1,0 +1,5 @@
+{
+    "type":"player.health.renderer",
+    "depends":["health"],
+    "class":"tk.sirtwinkles.spicedtea.components.HealthRenderComponent",
+}

@@ -1,0 +1,5 @@
+{
+    "type":"mover",
+    "depends":["position"],
+    "class":"tk.sirtwinkles.spicedtea.components.MoverComponent",
+}

@@ -1,0 +1,5 @@
+{
+    "type":"inventory",
+    "depends":[],
+    "class":"tk.sirtwinkles.spicedtea.components.InventoryComponent",
+}

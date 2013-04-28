@@ -1,0 +1,16 @@
+{
+    "name":"player",
+    "instance.type":"singleton",
+    "components":[
+          {"type":"image", "x":0,"y":0}
+        , {"type":"position"}
+        , {"type":"mover"}
+        , {"type":"inventory", "width":10, "height":4}
+        , {"type":"player.driver"}
+        , {"type":"image.renderer"}
+        , {"type":"health", "max":10}
+        , {"type":"health.renderer"}
+        , {"type":"xp"}
+        , {"type":"xp.renderer"}
+    ]
+}

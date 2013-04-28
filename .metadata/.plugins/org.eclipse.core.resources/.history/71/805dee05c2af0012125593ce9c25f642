@@ -1,0 +1,21 @@
+package tk.sirtwinkles.spicedtea.sys.combat;
+
+import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.state.PlayingState;
+import tk.sirtwinkles.spicedtea.sys.System;
+
+public class CombatSystem extends System {
+	private LinkedList<Attack> attacks;
+
+	public CombatSystem() {
+		super("combat");
+	}
+
+	@Override
+	public void run(GameSpicedTea game, PlayingState play) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}

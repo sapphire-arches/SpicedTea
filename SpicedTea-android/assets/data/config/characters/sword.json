@@ -1,0 +1,7 @@
+{
+    "name":"sword",
+    "instance.type":"multiinstance",
+    "components":[
+         {"type":"weapon", "width":1, "height":2}
+    ]
+}

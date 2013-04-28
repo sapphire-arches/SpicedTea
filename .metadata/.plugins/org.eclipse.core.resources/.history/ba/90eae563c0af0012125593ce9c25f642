@@ -1,0 +1,28 @@
+package tk.sirtwinkles.spicedtea.components;
+
+import com.badlogic.gdx.utils.OrderedMap;
+
+import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.state.PlayingState;
+
+public class XPComponent extends Component {
+	public int xp;
+	public int nextLevelXP;
+	public int level;
+	
+	public XPComponent(OrderedMap<String, Object> config) {
+		super(config);
+		health = maxHealth = ((Float)(config.get("max"))).intValue();
+	}
+
+	@Override
+	public void update(GameSpicedTea game, PlayingState play) {
+		//Nothing to do here.
+	}
+
+	@Override
+	public void destroy(GameSpicedTea game, PlayingState play) {
+		//Nothing to do here.
+	}
+
+}

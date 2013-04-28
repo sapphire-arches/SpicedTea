@@ -2,11 +2,14 @@ package tk.sirtwinkles.spicedtea.state;
 
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
 import tk.sirtwinkles.spicedtea.Globals;
+import tk.sirtwinkles.spicedtea.components.HealthComponent;
 import tk.sirtwinkles.spicedtea.components.PlayerDriverComponent;
 import tk.sirtwinkles.spicedtea.components.PositionComponent;
 import tk.sirtwinkles.spicedtea.components.RenderComponent;
 import tk.sirtwinkles.spicedtea.entities.Entity;
 import tk.sirtwinkles.spicedtea.entities.EntityFactory;
+import tk.sirtwinkles.spicedtea.sys.combat.CombatSystem;
+import tk.sirtwinkles.spicedtea.sys.render.HealthBarRenderer;
 import tk.sirtwinkles.spicedtea.sys.render.RenderingSystem;
 import tk.sirtwinkles.spicedtea.sys.render.Viewport;
 import tk.sirtwinkles.spicedtea.world.World;
@@ -19,6 +22,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 public class PlayingState implements GameState {
 	private RenderingSystem render;
+	private CombatSystem combat;
 	private World world;
 	private long lastMoveTime;
 	private PlayerDriverComponent player;
@@ -42,6 +46,7 @@ public class PlayingState implements GameState {
 			player = (PlayerDriverComponent) ent.getComponent("player.driver");
 			world = new World(ent);
 			render = new RenderingSystem(new Viewport(new Rectangle()), this);
+			combat = new CombatSystem();
 			// Build player
 			PositionComponent pc = (PositionComponent) ent
 					.getComponent("position");
@@ -74,6 +79,18 @@ public class PlayingState implements GameState {
 			player.update(game, this);
 			if (player.getPerformedActionLastUpdate()) {
 				world.update(game, this);
+				combat.run(game, this);
+				
+				for (Entity ent : world.getCurrent().getEntities()) {
+					HealthComponent hc = (HealthComponent) ent.getComponent("health");
+					if (hc != null) {
+						if (hc.getHealth() <= 0) {
+							world.getCurrent().removeEntity(ent);
+							ent.destroy(game, this);
+						}
+					}
+				}
+				
 				if (world.getCurrent().isComlete()) {
 					TileSetProvider prov = getNextTileset();
 					Entity player = world.getCurrent().getEntity("player");
@@ -124,5 +141,9 @@ public class PlayingState implements GameState {
 	
 	public Entity getPlayer() {
 		return player.getOwner();
+	}
+	
+	public CombatSystem getCombatSystem() {
+		return combat;
 	}
 }

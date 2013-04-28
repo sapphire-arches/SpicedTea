@@ -15,6 +15,8 @@ public class Level {
 	private boolean[][] visible;
 	private int width, height;
 	private LinkedList<Entity> ents;
+	private LinkedList<Entity> toRemove;
+	private LinkedList<Entity> toAdd;
 	private HashMap<String, Entity> entityMap;
 	private boolean completed;
 
@@ -24,6 +26,8 @@ public class Level {
 		this.width = width;
 		this.height = height;
 		this.ents = new LinkedList<Entity>();
+		this.toAdd = new LinkedList<Entity>();
+		this.toRemove = new LinkedList<Entity>();
 		this.entityMap = new HashMap<String, Entity>();
 		for (int x = 0; x < width; ++x) {
 			for (int y = 0; y < height; ++y) {
@@ -55,17 +59,24 @@ public class Level {
 	}
 
 	public void addEntity(Entity ent) {
+		addEntity(ent, true);
+	}
+	
+	public void addEntity(Entity ent, boolean queue) {
 		String ename = ent.getID().toLowerCase();
 		if (entityMap.containsKey(ename)) {
 			throw new IllegalArgumentException("Two entities with ID:" + ename);
 		}
-		ents.add(ent);
-		entityMap.put(ename, ent);
+		if (!queue) {
+			ents.add(ent);
+			entityMap.put(ename, ent);
+		} else {
+			toAdd.add(ent);
+		}
 	}
 
 	public void removeEntity(Entity ent) {
-		ents.remove(ent);
-		entityMap.remove(ent.getID().toLowerCase());
+		toRemove.add(ent);
 	}
 
 	public LinkedList<Entity> getEntities() {
@@ -77,6 +88,20 @@ public class Level {
 	}
 
 	public void update(GameSpicedTea game, PlayingState play) {
+		for (Entity ent : toRemove) {
+			ents.remove(ent);
+			entityMap.remove(ent.getID().toLowerCase());
+		}
+		
+		for (Entity ent : toAdd) {
+			String ename = ent.getID().toLowerCase();
+			ents.add(ent);
+			entityMap.put(ename, ent);
+		}
+		
+		toRemove.clear();
+		toAdd.clear();
+		
 		for (Entity e : ents) {
 			e.update(game, play);
 		}

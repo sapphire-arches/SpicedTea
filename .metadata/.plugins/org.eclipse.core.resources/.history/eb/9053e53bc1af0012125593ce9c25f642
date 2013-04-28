@@ -1,0 +1,14 @@
+package tk.sirtwinkles.spicedtea.sys;
+
+import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.state.PlayingState;
+
+public class CombatSystem extends System {
+
+	@Override
+	public void run(GameSpicedTea game, PlayingState play) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,20 @@
+package tk.sirtwinkles.spicedtea.components;
+
+import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.state.PlayingState;
+
+public class HealthComponent extends Component {
+
+	@Override
+	public void update(GameSpicedTea game, PlayingState play) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void destroy(GameSpicedTea game, PlayingState play) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

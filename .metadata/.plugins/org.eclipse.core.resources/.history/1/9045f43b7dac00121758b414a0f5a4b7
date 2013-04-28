@@ -1,0 +1,40 @@
+package tk.sirtwinkles.spicedtea.sys.render;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
+
+import tk.sirtwinkles.spicedtea.Globals;
+import tk.sirtwinkles.spicedtea.GraphicsContext;
+import tk.sirtwinkles.spicedtea.state.PlayingState;
+
+public class InventoryRenderer implements Renderer {
+	private static final int GUI_TILE_SIZE = 8;
+
+	private Texture gui;
+
+	public InventoryRenderer() {
+		this.gui = Globals.assets.get("data/gui.png");
+	}
+
+	@Override
+	public void render(GraphicsContext context, PlayingState state,
+			Viewport view) {
+		SpriteBatch batch = context.getBatch();
+
+		final Rectangle size = view.getSizeAndPosition();
+		final int width = 80;
+		final int height = 32;
+		final int xbase = (int) ((size.width / 2) - (width / 2));
+		final int ybase = (int) ((size.height / 2) - (height / 2));
+
+		//Draw corners.
+		drawTile(batch, xbase - GUI_TILE_SIZE, ybase - GUI_TILE_SIZE, tx, ty)
+	}
+
+	private void drawTile(SpriteBatch batch, int x, int y, int tx, int ty) {
+		batch.draw(gui, x, y, GUI_TILE_SIZE, GUI_TILE_SIZE, tx * GUI_TILE_SIZE,
+				ty * GUI_TILE_SIZE, GUI_TILE_SIZE, GUI_TILE_SIZE, false, true);
+	}
+}

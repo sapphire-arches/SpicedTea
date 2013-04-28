@@ -1,0 +1,68 @@
+package tk.sirtwinkles.spicedtea.state;
+
+import java.util.HashMap;
+
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.OrderedMap;
+
+import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.Globals;
+import tk.sirtwinkles.spicedtea.input.InputQueue;
+
+public class TextDisplayState implements GameState {
+	private static OrderedMap<String, Object> texts;
+	private static BitmapFont bmf = new BitmapFont(true);
+	private String textKey;
+	private boolean inputEvent;
+
+	public TextDisplayState(String textKey) {
+		this.textKey = textKey;
+		this.inputEvent = false;
+	}
+
+	@Override
+	public void onEnterState(GameSpicedTea game) {
+		if (!Globals.assets.isLoaded("data/config/texts.json")) {
+			Globals.assets.load("data/config/texts.json", String.class);
+		}
+	}
+
+	@Override
+	public void onLeaveState(GameSpicedTea game) {
+	}
+
+	@Override
+	public boolean switchState(GameSpicedTea game) {
+		return false;
+	}
+
+	@Override
+	public void render(GameSpicedTea game) {
+		if (texts != null) {
+		SpriteBatch sb = game.getContext().getBatch(); 
+		bmf.draw
+		}
+	}
+
+	@Override
+	public void tick(GameSpicedTea game) {
+		if (texts == null && Globals.assets.isLoaded("data/config/texts.json")) {
+			texts = (OrderedMap<String, Object>) Globals.json
+					.parse((String) Globals.assets
+							.get("data/config/texts.json"));
+		}
+
+		InputQueue iq = game.getInput();
+		inputEvent = inputEvent || iq.getKeyEvents().size() != 0
+				|| iq.getTouchEvents().size() != 0;
+		iq.clearQueues();
+	}
+
+	@Override
+	public GameState getNextState(GameSpicedTea game) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

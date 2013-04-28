@@ -8,8 +8,8 @@
         , {"type":"inventory", "width":10, "height":4}
         , {"type":"player.driver"}
         , {"type":"image.renderer"}
-        , {"type":"health", "max":10}
-        , {"type":"health.renderer"}
+        , {"type":"health", "max":20}
+        , {"type":"player.health.renderer"}
         , {"type":"xp"}
         , {"type":"xp.renderer"}
     ]

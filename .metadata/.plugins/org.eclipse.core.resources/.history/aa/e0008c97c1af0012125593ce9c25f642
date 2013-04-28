@@ -1,0 +1,5 @@
+package tk.sirtwinkles.spicedtea.sys.combat;
+
+public class Attack {
+
+}

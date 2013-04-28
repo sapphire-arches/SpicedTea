@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Change method &apos;public void tk.sirtwinkles.spicedtea.sys.System.run(GameSpicedTea game)&apos; to &apos;public void run(GameSpicedTea game, PlayingState play)&apos;&#x0A;- Original project: &apos;SpicedTea&apos;&#x0A;- Original element: &apos;tk.sirtwinkles.spicedtea.sys.System.run(...)&apos;&#x0A;- Added parameters:&#x0A;     PlayingState play" default2="FIX_THIS_SHIT" delegate="false" deprecate="true" description="Change method &apos;run&apos;" flags="589830" id="org.eclipse.jdt.ui.change.method.signature" input="/src&lt;tk.sirtwinkles.spicedtea.sys{System.java[System~run~QGameSpicedTea;" name="run" parameter1="GameSpicedTea game 0 GameSpicedTea game false" parameter2="{added} {added} -1 PlayingState play false" stamp="1366163845779" version="1.0"/>
+</session>

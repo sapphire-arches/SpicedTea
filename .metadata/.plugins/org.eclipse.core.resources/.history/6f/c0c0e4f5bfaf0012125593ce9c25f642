@@ -1,0 +1,5 @@
+{
+    "type":"health",
+    "depends":[],
+    "class":"tk.sirtwinkles.spicedtea.components.HealthComponent",
+}

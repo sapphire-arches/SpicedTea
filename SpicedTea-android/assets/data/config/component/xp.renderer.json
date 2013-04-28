@@ -1,0 +1,5 @@
+{
+    "type":"xp.renderer",
+    "depends":["xp"],
+    "class":"tk.sirtwinkles.spicedtea.components.XPRenderComponent",
+}

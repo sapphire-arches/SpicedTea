@@ -1,0 +1,42 @@
+package tk.sirtwinkles.spicedtea.components;
+
+import com.badlogic.gdx.utils.OrderedMap;
+
+import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.entities.Entity;
+import tk.sirtwinkles.spicedtea.entities.EntityFactory;
+import tk.sirtwinkles.spicedtea.state.PlayingState;
+
+public class InventoryComponent extends Component {
+	private Entity[][] ents;
+	private int widht, height;
+	
+	public InventoryComponent(OrderedMap<String, Object> config) {
+		super(config);
+		int width = ((Float) config.get("width")).intValue();
+		int width = ((Float) config.get("height")).intValue();
+		ents = new Entity[width, height];
+		
+		//XXX:REMOVE
+		for(int i = 0; i < ents.length; ++i) {
+			ents[i] = EntityFactory.buildEntity("weapon");
+		}
+	}
+
+	@Override
+	public void update(GameSpicedTea game, PlayingState play) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void destroy(GameSpicedTea game, PlayingState play) {
+		for (Entity ent : ents) {
+			ent.destroy(game, play);
+		}
+	}
+
+	public Entity[] getContents() {
+		return ents;
+	}
+}
