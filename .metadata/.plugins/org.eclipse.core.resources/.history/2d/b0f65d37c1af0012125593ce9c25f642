@@ -1,5 +1,0 @@
-package tk.sirtwinkles.spicedtea.sys;
-
-public class CombatSystem extends System {
-
-}

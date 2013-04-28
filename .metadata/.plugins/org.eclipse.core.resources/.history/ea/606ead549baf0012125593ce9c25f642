@@ -1,5 +1,0 @@
-{
-    "type":"attack",
-    "depends":["health"],
-    "class":"tk.sirtwinkles.spicedtea.components.AttackComponent",
-}

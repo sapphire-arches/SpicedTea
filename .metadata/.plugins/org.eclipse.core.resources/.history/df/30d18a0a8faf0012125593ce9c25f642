@@ -1,5 +1,0 @@
-{
-    "type":"player.driver",
-    "depends":["position","mover"],
-    "class":"tk.sirtwinkles.spicedtea.components.PlayerDriverComponent",
-}

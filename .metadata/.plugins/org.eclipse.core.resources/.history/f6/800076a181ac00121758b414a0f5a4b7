@@ -1,7 +1,0 @@
-{
-    "name":"weapon",
-    "instance.type":"multiinstance",
-    "components":[
-         {"type":"weapon"}
-    ]
-}

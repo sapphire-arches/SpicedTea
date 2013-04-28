@@ -1,5 +1,0 @@
-{
-    "type":"level",
-    "depends":[],
-    "class":"tk.sirtwinkles.spicedtea.components.HealthComponent",
-}
