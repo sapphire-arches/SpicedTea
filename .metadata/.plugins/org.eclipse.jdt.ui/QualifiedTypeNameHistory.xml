@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.state.PlayingState"/>
-<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.state.GameState"/>
-<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.tile.TileClass"/>
-<fullyQualifiedTypeName name="java.util.Queue"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.utils.Pool.Poolable"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.utils.Pool"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.input.TouchEvent"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.sys.render.Viewport"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.math.Rectangle"/>
 <fullyQualifiedTypeName name="java.awt.geom.PathIterator"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.util.Pather"/>
 <fullyQualifiedTypeName name="java.util.PriorityQueue"/>
@@ -20,7 +12,6 @@
 <fullyQualifiedTypeName name="com.badlogic.gdx.utils.TimeUtils"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.FeatureExtraDoor"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.util.Pather.PathNode"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Input.Keys"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.bsp.BSPDungeonGenerator"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.Room"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.CarveDungeonGenerator"/>
@@ -30,13 +21,10 @@
 <fullyQualifiedTypeName name="java.lang.Class"/>
 <fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.RoomPopulator"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.tile.StairDirection"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.World"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.sys.render.RenderingSystem"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.GameSpicedTea"/>
-<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.Globals"/>
-<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.components.Component"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.sys.render.ImageComponentRenderer"/>
 <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.Direction"/>
@@ -47,7 +35,6 @@
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.RoomFeature"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.RoomFeatureFactory"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.gen.TileSetProvider"/>
-<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.entities.EntityFactory"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.MathUtils"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.world.Level"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
@@ -59,5 +46,18 @@
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.GraphicsContext"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.components.PositionComponent"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
+<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.state.PlayingState"/>
+<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.state.InventoryViewState"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.Input.Keys"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
+<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.Globals"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.TextureRegion"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.math.Rectangle"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
+<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.components.Component"/>
+<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.entities.EntityFactory"/>
+<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.components.InventoryComponent"/>
+<fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.sys.render.InventoryRenderer"/>
 <fullyQualifiedTypeName name="tk.sirtwinkles.spicedtea.entities.Entity"/>
 </qualifiedTypeNameHistroy>

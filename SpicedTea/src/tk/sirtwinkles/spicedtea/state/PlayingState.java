@@ -22,34 +22,48 @@ public class PlayingState implements GameState {
 	private World world;
 	private long lastMoveTime;
 	private PlayerDriverComponent player;
+	// Should we regenerate the world?
+	private boolean generateWorld;
+	private int currentLevel;
+	//Next state.
+	private GameState nextState;
+	//Should we switch?
+	private boolean changeState;
 
 	public PlayingState() {
+		this.generateWorld = true;
 	}
 
 	@Override
 	public void onEnterState(GameSpicedTea game) {
-		Entity ent = EntityFactory.buildEntity("Player");
-		player = (PlayerDriverComponent) ent.getComponent("player.driver");
-		world = new World(ent);
-		render = new RenderingSystem(new Viewport(new Rectangle()), this);
-		// Build player
-		PositionComponent pc = (PositionComponent) ent.getComponent("position");
-		render.setCenter(pc);
-		world.update(game, this);
+		Globals.ps = this;
+		if (generateWorld) {
+			Entity ent = EntityFactory.buildEntity("Player");
+			player = (PlayerDriverComponent) ent.getComponent("player.driver");
+			world = new World(ent);
+			render = new RenderingSystem(new Viewport(new Rectangle()), this);
+			// Build player
+			PositionComponent pc = (PositionComponent) ent
+					.getComponent("position");
+			render.setCenter(pc);
+			world.update(game, this);
+			generateWorld = false;
+		}
 	}
 
 	@Override
 	public void onLeaveState(GameSpicedTea game) {
+		changeState = false;
 	}
 
 	@Override
 	public boolean switchState(GameSpicedTea game) {
-		return false;
+		return changeState;
 	}
 
 	@Override
 	public void render(GameSpicedTea game) {
-		render.run(game);
+		render.run(game, this);
 	}
 
 	@Override
@@ -61,18 +75,15 @@ public class PlayingState implements GameState {
 			if (player.getPerformedActionLastUpdate()) {
 				world.update(game, this);
 				if (world.getCurrent().isComlete()) {
-					TileSetProvider prov = new JSONTileSetProvider(
-							(String) Globals.assets
-									.get("data/config/tilesets/GreyBrick.json"));
+					TileSetProvider prov = getNextTileset();
 					Entity player = world.getCurrent().getEntity("player");
 					world.getCurrent().removeEntity(player);
 					for (Entity ent : world.getCurrent().getEntities()) {
 						ent.destroy(game, this);
 					}
 
-					world.setCurrent(LevelGenerator.create(80, 40, 0, prov,
+					world.setCurrent(LevelGenerator.create(80, 40, ++currentLevel, prov,
 							player));
-					// player.update(game, this);
 				}
 			}
 			// Remove any input events that were not processed.
@@ -80,9 +91,22 @@ public class PlayingState implements GameState {
 		}
 	}
 
+	private TileSetProvider getNextTileset() {
+		String tsName = "RedBrick.json";
+		switch(currentLevel) {
+		case 0: tsName = "GreyBrick.json"; break;
+		default: System.out.println("Warning: no tileset specified for level: " + (currentLevel + 1));break;
+		}
+		
+		
+		return new JSONTileSetProvider((String) Globals.assets.get("data/config/tilesets/" + tsName));
+	}
+
 	@Override
 	public GameState getNextState(GameSpicedTea game) {
-		return null;
+		GameState t = nextState;
+		nextState = null;
+		return t;
 	}
 
 	public World getWorld() {
@@ -91,5 +115,14 @@ public class PlayingState implements GameState {
 
 	public RenderingSystem getRenderingSystem() {
 		return this.render;
+	}
+	
+	public void requestStateChange(GameState to) {
+		this.nextState = to;
+		this.changeState = true;
+	}
+	
+	public Entity getPlayer() {
+		return player.getOwner();
 	}
 }

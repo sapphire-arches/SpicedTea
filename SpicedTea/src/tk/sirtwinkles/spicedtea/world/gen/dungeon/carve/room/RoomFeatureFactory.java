@@ -4,10 +4,9 @@ import java.util.HashMap;
 
 import tk.sirtwinkles.spicedtea.Globals;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Application.ApplicationType;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.OrderedMap;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
@@ -25,7 +24,6 @@ public final class RoomFeatureFactory {
 		if (Gdx.app.getType() == ApplicationType.Desktop) {
 			searchPath = "./bin/" + basePath;
 		}
-		JsonReader reader = new JsonReader();
 		ClassLoader loader = ClassLoader.getSystemClassLoader();
 		System.out.println("Begin parsing rooms");
 		for (FileHandle f : Gdx.files.internal(searchPath).list()) {
@@ -34,7 +32,7 @@ public final class RoomFeatureFactory {
 			}
 			String cfgString = Globals.assets.get(basePath + f.name());
 			Globals.assets.unload(basePath + f.name());
-			OrderedMap<String, Object> config = (OrderedMap<String, Object>) reader
+			OrderedMap<String, Object> config = (OrderedMap<String, Object>) Globals.json
 					.parse(cfgString);
 			
 			String type = ((String) config.get("type")).toLowerCase();

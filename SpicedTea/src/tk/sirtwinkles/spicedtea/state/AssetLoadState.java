@@ -28,6 +28,7 @@ public class AssetLoadState implements GameState {
 		System.out.println(Gdx.files.internal("data/config/tilesets/GreyBrick.json").file().getAbsolutePath());
 		manager.load("data/terrain.png", Texture.class);
 		manager.load("data/monsters.png", Texture.class);
+		manager.load("data/gui.png", Texture.class);
 		loadAllInDirectory("data/config/tilesets/", "json", String.class);
 		loadAllInDirectory("data/config/component/", "json", String.class);
 		loadAllInDirectory("data/config/characters/", "json", String.class);
@@ -72,7 +73,7 @@ public class AssetLoadState implements GameState {
 
 	@Override
 	public GameState getNextState(GameSpicedTea game) {
-		return new PlayingState();
+		return new TextDisplayState("intro", new PlayingState());
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })

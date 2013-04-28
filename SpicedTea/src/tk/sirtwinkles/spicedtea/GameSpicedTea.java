@@ -42,6 +42,7 @@ public class GameSpicedTea implements ApplicationListener {
 	public GameSpicedTea(int width, int height) {
 		this.dontusethiswidth = width;
 		this.dontusethisheight = height;
+		Globals.game = this;
 	}
 	
 	@Override

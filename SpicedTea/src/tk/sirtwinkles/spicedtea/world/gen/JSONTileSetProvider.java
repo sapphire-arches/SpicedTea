@@ -1,13 +1,10 @@
 package tk.sirtwinkles.spicedtea.world.gen;
 
+import static tk.sirtwinkles.spicedtea.MathUtils.random;
+
 import java.util.HashMap;
 
-import com.badlogic.gdx.utils.JsonReader;
-import com.badlogic.gdx.utils.ObjectMap.Entry;
-import com.badlogic.gdx.utils.OrderedMap;
-
-import static tk.sirtwinkles.spicedtea.MathUtils.random;
-import tk.sirtwinkles.spicedtea.world.Direction;
+import tk.sirtwinkles.spicedtea.Globals;
 import tk.sirtwinkles.spicedtea.world.tile.JSONBackgroundTile;
 import tk.sirtwinkles.spicedtea.world.tile.JSONDoorTile;
 import tk.sirtwinkles.spicedtea.world.tile.JSONFloorTile;
@@ -16,6 +13,10 @@ import tk.sirtwinkles.spicedtea.world.tile.JSONWallTile;
 import tk.sirtwinkles.spicedtea.world.tile.StairDirection;
 import tk.sirtwinkles.spicedtea.world.tile.Tile;
 
+import com.badlogic.gdx.utils.ObjectMap.Entry;
+import com.badlogic.gdx.utils.OrderedMap;
+
+@SuppressWarnings("unchecked")
 public class JSONTileSetProvider implements TileSetProvider {
 	class TileDescriptor {
 		int x, y, w, h;
@@ -25,8 +26,7 @@ public class JSONTileSetProvider implements TileSetProvider {
 	String idBase;
 
 	public JSONTileSetProvider(String config) {
-		JsonReader json = new JsonReader();
-		OrderedMap<String, Object> root = (OrderedMap<String, Object>) json
+		OrderedMap<String, Object> root = (OrderedMap<String, Object>) Globals.json
 				.parse(config);
 		OrderedMap<String, Object> tiles = (OrderedMap<String, Object>) root
 				.get("tiles");

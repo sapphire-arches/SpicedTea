@@ -120,7 +120,7 @@ public class CarveDungeonGenerator {
 		//data[width / 2][height / 2] = STAIR_UP;
 		
 		Room r = new Room(sx, sy, w, h);
-		r.feature = "StairUp";
+		r.feature = "Spawn";
 		rooms.add(r);
 	}
 }

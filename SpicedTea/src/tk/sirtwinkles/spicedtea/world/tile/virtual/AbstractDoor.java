@@ -1,14 +1,17 @@
 package tk.sirtwinkles.spicedtea.world.tile.virtual;
 
+import tk.sirtwinkles.spicedtea.Globals;
 import tk.sirtwinkles.spicedtea.components.PlayerDriverComponent;
 import tk.sirtwinkles.spicedtea.components.PositionComponent;
 import tk.sirtwinkles.spicedtea.entities.Entity;
+import tk.sirtwinkles.spicedtea.state.TextDisplayState;
 import tk.sirtwinkles.spicedtea.world.Level;
 import tk.sirtwinkles.spicedtea.world.Point;
 import tk.sirtwinkles.spicedtea.world.tile.Tile;
 import tk.sirtwinkles.spicedtea.world.tile.TileClass;
 
 public abstract class AbstractDoor extends Tile {
+	static boolean doorOpened;
 	boolean open;
 	int openX, openY;
 
@@ -35,6 +38,10 @@ public abstract class AbstractDoor extends Tile {
 			in.floodFillVisiblity(pc.x + 0, pc.y - 1);
 			in.floodFillVisiblity(pc.x + 1, pc.y + 0);
 			in.floodFillVisiblity(pc.x - 1, pc.y + 0);
+			if (!doorOpened) {
+				Globals.ps.requestStateChange(new TextDisplayState("first_open_door", Globals.ps));
+				doorOpened = true;
+			}
 		}
 	}
 	

@@ -33,11 +33,10 @@ public class RenderingSystem extends System {
 	}
 
 	@Override
-	public void run(GameSpicedTea game) {
+	public void run(GameSpicedTea game, PlayingState play) {
 		// setup of some vars.
 		GL10 gl10 = Gdx.graphics.getGL10();
 		GraphicsContext context = game.getContext();
-		PlayingState state = (PlayingState) game.getCurrentState();
 
 		view.resize(context.getWidth() / PXL_SCALE, context.getHeight()
 				/ PXL_SCALE);
@@ -64,7 +63,7 @@ public class RenderingSystem extends System {
 		context.begin(); // Begin rendering.
 		levelRen.render(context, view);
 		for (Renderer ren : componentRenderers) {
-			ren.render(context, state, view);
+			ren.render(context, play, view);
 		}
 		context.end();
 	}

@@ -3,6 +3,8 @@ package tk.sirtwinkles.spicedtea.input;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import tk.sirtwinkles.spicedtea.input.TouchEvent.EventType;
+
 import com.badlogic.gdx.InputProcessor;
 
 public class InputQueue implements InputProcessor {
@@ -35,20 +37,20 @@ public class InputQueue implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		touchEvents.add(new TouchEvent(screenX, screenY, pointer, true));
+		touchEvents.add(new TouchEvent(screenX, screenY, pointer, EventType.PRESSED));
 		return true;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		touchEvents.add(new TouchEvent(screenX, screenY, pointer, false));
+		touchEvents.add(new TouchEvent(screenX, screenY, pointer, EventType.RELEASED));
 		return true;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		// We probably don't want these.
-		return false;
+		touchEvents.add(new TouchEvent(screenX, screenY, pointer, EventType.DRAGGED));
+		return true;
 	}
 
 	@Override

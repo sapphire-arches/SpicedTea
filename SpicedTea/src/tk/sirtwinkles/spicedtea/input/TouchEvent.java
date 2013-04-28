@@ -1,14 +1,18 @@
 package tk.sirtwinkles.spicedtea.input;
 
 public class TouchEvent {
-	private int x, y, pointer;
-	private boolean pressed;
+	public enum EventType {
+		PRESSED, RELEASED, DRAGGED
+	}
 	
-	public TouchEvent(int x, int y, int pointer, boolean pressed) {
+	private int x, y, pointer;
+	private EventType type;
+	
+	public TouchEvent(int x, int y, int pointer, EventType type) {
 		this.x = x;
 		this.y = y;
 		this.pointer = pointer;
-		this.pressed = pressed;
+		this.type = type;
 	}
 
 	public int getX() {
@@ -23,7 +27,7 @@ public class TouchEvent {
 		return pointer;
 	}
 	
-	public boolean isPressEvent() {
-		return pressed;
+	public EventType getType() {
+		return type;
 	}
 }

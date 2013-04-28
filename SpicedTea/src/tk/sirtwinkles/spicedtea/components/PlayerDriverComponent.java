@@ -18,6 +18,8 @@ import tk.sirtwinkles.spicedtea.GameSpicedTea;
 import tk.sirtwinkles.spicedtea.input.InputQueue;
 import tk.sirtwinkles.spicedtea.input.KeyEvent;
 import tk.sirtwinkles.spicedtea.input.TouchEvent;
+import tk.sirtwinkles.spicedtea.input.TouchEvent.EventType;
+import tk.sirtwinkles.spicedtea.state.InventoryViewState;
 import tk.sirtwinkles.spicedtea.state.PlayingState;
 import tk.sirtwinkles.spicedtea.sys.render.Viewport;
 import tk.sirtwinkles.spicedtea.world.Direction;
@@ -71,6 +73,10 @@ public class PlayerDriverComponent extends Component {
 					mc.add(Direction.W);
 					keyitr.remove();
 					break;
+				//TODO: Make the inventory system work.
+				//case Input.Keys.E:
+				//	displayInventory(play);
+				//	break;
 				}
 			}
 		}
@@ -78,7 +84,7 @@ public class PlayerDriverComponent extends Component {
 		ListIterator<TouchEvent> touchitr = iq.getTouchEvents().listIterator();
 		while (touchitr.hasNext()) {
 			TouchEvent evnt = touchitr.next();
-			if (evnt.isPressEvent() && evnt.getPointer() == 0 && !handledPress && ! mc.hasQueuedMoves()) {
+			if (evnt.getType() == TouchEvent.EventType.PRESSED && evnt.getPointer() == 0 && !handledPress && ! mc.hasQueuedMoves()) {
 				PositionComponent pc = (PositionComponent) this.owner
 						.getComponent("position");
 				handledPress = true;
@@ -93,7 +99,7 @@ public class PlayerDriverComponent extends Component {
 				goal.x = end.x; goal.y = end.y;
 				mc.path(start, end, play.getWorld().getCurrent());
 			}
-			if (!evnt.isPressEvent() && handledPress) {
+			if (evnt.getType() == TouchEvent.EventType.RELEASED && handledPress) {
 				handledPress = false;
 			}
 		}
@@ -108,9 +114,12 @@ public class PlayerDriverComponent extends Component {
 		return performedActionLastUpdate;
 	}
 
+	public void displayInventory(PlayingState p) {
+		p.requestStateChange(new InventoryViewState(p));
+	}
+
 	@Override
 	public void destroy(GameSpicedTea game, PlayingState play) {
 		//Nothing to do here.
 	}
-
 }

@@ -11,7 +11,6 @@ import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.OrderedMap;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -29,8 +28,7 @@ public final class EntityFactory {
 	public static Entity buildEntity(String name) {
 		String jsonConfig = Globals.assets.get("data/config/characters/" + name
 				+ ".json");
-		JsonReader reader = new JsonReader();
-		OrderedMap<String, Object> root = (OrderedMap<String, Object>) reader
+		OrderedMap<String, Object> root = (OrderedMap<String, Object>) Globals.json
 				.parse(jsonConfig);
 		String trueName = (String) root.get("name");
 		if (((String)root.get("instance.type")).equalsIgnoreCase("multiinstance")) {
@@ -118,7 +116,6 @@ public final class EntityFactory {
 		if (Gdx.app.getType() == ApplicationType.Desktop) {
 			searchPath = "./bin/" + basePath;
 		}
-		JsonReader reader = new JsonReader();
 		ClassLoader loader = ClassLoader.getSystemClassLoader();
 		System.out.println("Begin parsing components");
 		for (FileHandle f : Gdx.files.internal(searchPath).list()) {
@@ -127,7 +124,7 @@ public final class EntityFactory {
 			}
 			String cfgString = Globals.assets.get(basePath + f.name());
 			Globals.assets.unload(basePath + f.name());
-			OrderedMap<String, Object> config = (OrderedMap<String, Object>) reader
+			OrderedMap<String, Object> config = (OrderedMap<String, Object>) Globals.json
 					.parse(cfgString);
 
 			String componentName = ((String) config.get("type")).toLowerCase();

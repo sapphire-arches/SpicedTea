@@ -26,4 +26,5 @@ pydevOccurrenceIndicationColor=236,231,213
 searchResultIndicationColor=236,231,213
 secondaryIPColor=253,246,227
 spacesForTabs=true
+spellingEngine=org.eclipse.jdt.internal.ui.text.spelling.DefaultSpellingEngine
 writeOccurrenceIndicationColor=236,231,213

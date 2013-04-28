@@ -1,6 +1,7 @@
 package tk.sirtwinkles.spicedtea.sys;
 
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.state.PlayingState;
 
 /**
  * A generic system.
@@ -18,5 +19,5 @@ public abstract class System {
 		return id;
 	}
 	
-	public abstract void run(GameSpicedTea game);
+	public abstract void run(GameSpicedTea game, PlayingState play);
 }
