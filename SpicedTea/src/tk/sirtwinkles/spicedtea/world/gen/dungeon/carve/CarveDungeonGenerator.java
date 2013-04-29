@@ -1,14 +1,15 @@
 package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve;
 
 import static tk.sirtwinkles.spicedtea.MathUtils.random;
-import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.*;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.BACKGROUND;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.FLOOR;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.WALL;
+
 import java.util.ArrayList;
 
 import tk.sirtwinkles.spicedtea.world.Direction;
 import tk.sirtwinkles.spicedtea.world.Level;
 import tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.Room;
-import tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.RoomFeature;
-import tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.RoomFeatureFactory;
 import tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.RoomPopulator;
 
 public class CarveDungeonGenerator {

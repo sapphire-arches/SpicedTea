@@ -1,11 +1,6 @@
 package tk.sirtwinkles.spicedtea.world.gen.dungeon;
 
-import tk.sirtwinkles.spicedtea.components.PositionComponent;
-import tk.sirtwinkles.spicedtea.components.RenderComponent;
-import tk.sirtwinkles.spicedtea.entities.Entity;
-import tk.sirtwinkles.spicedtea.entities.EntityFactory;
 import tk.sirtwinkles.spicedtea.world.Level;
-import tk.sirtwinkles.spicedtea.world.gen.dungeon.bsp.BSPDungeonGenerator;
 import tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.CarveDungeonGenerator;
 
 public class DungeonGenerator {

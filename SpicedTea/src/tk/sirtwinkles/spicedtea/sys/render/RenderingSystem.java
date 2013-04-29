@@ -21,6 +21,7 @@ public class RenderingSystem extends System {
 	private Viewport view;
 	private OrthographicCamera cam;
 	private LevelRenderer levelRen;
+	private AttacksRenderer attacks;
 	private PositionComponent center;
 
 	public RenderingSystem(Viewport view, PlayingState state) {
@@ -30,6 +31,7 @@ public class RenderingSystem extends System {
 		this.cam = new OrthographicCamera(1, 1);
 		Gdx.graphics.getGL10().glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		this.levelRen = new LevelRenderer(state.getWorld());
+		this.attacks = new AttacksRenderer(state.getCombatSystem());
 	}
 
 	@Override
@@ -65,6 +67,8 @@ public class RenderingSystem extends System {
 		for (Renderer ren : componentRenderers) {
 			ren.render(context, play, view);
 		}
+		attacks.render(context, view);
+		
 		context.end();
 	}
 

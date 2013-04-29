@@ -6,7 +6,6 @@ import tk.sirtwinkles.spicedtea.world.Level;
 import tk.sirtwinkles.spicedtea.world.World;
 import tk.sirtwinkles.spicedtea.world.tile.Tile;
 
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;

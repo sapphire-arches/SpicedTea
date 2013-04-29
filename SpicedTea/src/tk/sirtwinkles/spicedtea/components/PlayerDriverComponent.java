@@ -1,10 +1,9 @@
 package tk.sirtwinkles.spicedtea.components;
 
+import static tk.sirtwinkles.spicedtea.MathUtils.abs;
 import static tk.sirtwinkles.spicedtea.sys.render.LevelRenderer.TILE_SIZE;
 import static tk.sirtwinkles.spicedtea.sys.render.RenderingSystem.PXL_SCALE;
-import static tk.sirtwinkles.spicedtea.MathUtils.abs;
 
-import java.util.LinkedList;
 import java.util.ListIterator;
 
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
@@ -25,7 +24,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.OrderedMap;
 
 public class PlayerDriverComponent extends Component {
-	private LinkedList<Point> p;
 	private boolean handledPress;
 	private Point goal;
 	private boolean performedActionLastUpdate;
@@ -101,7 +99,7 @@ public class PlayerDriverComponent extends Component {
 				Point end = Point.getPoint(tbx + tx, tby + ty);
 				goal.x = end.x;
 				goal.y = end.y;
-				if (abs(goal.x - start.x) + abs(goal.y - start.y) <= 1) {
+				if (abs(goal.x - start.x) + abs(goal.y - start.y) <= 1 && (start.x != goal.x || start.y != goal.y)) {
 					Direction dir = null;
 					if (goal.x - start.x == 1) {
 						dir = Direction.E;

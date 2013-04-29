@@ -1,7 +1,5 @@
 package tk.sirtwinkles.spicedtea.world.tile.virtual;
 
-import com.badlogic.gdx.Gdx;
-
 import tk.sirtwinkles.spicedtea.entities.Entity;
 import tk.sirtwinkles.spicedtea.world.Level;
 import tk.sirtwinkles.spicedtea.world.tile.StairDirection;

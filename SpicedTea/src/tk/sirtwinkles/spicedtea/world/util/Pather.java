@@ -1,17 +1,16 @@
 package tk.sirtwinkles.spicedtea.world.util;
 
+import static tk.sirtwinkles.spicedtea.MathUtils.abs;
+
 import java.util.LinkedList;
 import java.util.PriorityQueue;
-import java.util.Queue;
-
-import com.badlogic.gdx.utils.Pool;
-import com.badlogic.gdx.utils.Pool.Poolable;
 
 import tk.sirtwinkles.spicedtea.entities.Entity;
 import tk.sirtwinkles.spicedtea.world.Level;
 import tk.sirtwinkles.spicedtea.world.Point;
 
-import static tk.sirtwinkles.spicedtea.MathUtils.abs;
+import com.badlogic.gdx.utils.Pool;
+import com.badlogic.gdx.utils.Pool.Poolable;
 
 public final class Pather {
 	static class PathNode implements Poolable, Comparable<PathNode> {

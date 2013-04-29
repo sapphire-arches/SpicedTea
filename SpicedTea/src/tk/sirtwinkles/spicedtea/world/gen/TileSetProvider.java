@@ -2,7 +2,6 @@ package tk.sirtwinkles.spicedtea.world.gen;
 
 import tk.sirtwinkles.spicedtea.world.tile.StairDirection;
 import tk.sirtwinkles.spicedtea.world.tile.Tile;
-import tk.sirtwinkles.spicedtea.world.tile.WallSide;
 
 public interface TileSetProvider {
 	public static final int BACKGROUND = 0;

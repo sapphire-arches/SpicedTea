@@ -1,7 +1,6 @@
 package tk.sirtwinkles.spicedtea.input;
 
 import java.util.LinkedList;
-import java.util.Queue;
 
 import tk.sirtwinkles.spicedtea.input.TouchEvent.EventType;
 

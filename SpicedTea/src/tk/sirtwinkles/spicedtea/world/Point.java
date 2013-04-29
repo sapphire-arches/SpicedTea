@@ -2,7 +2,6 @@ package tk.sirtwinkles.spicedtea.world;
 
 import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.Pool.Poolable;
-import com.badlogic.gdx.utils.ReflectionPool;
 
 public class Point implements Poolable {
 

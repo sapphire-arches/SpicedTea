@@ -4,6 +4,7 @@ import tk.sirtwinkles.spicedtea.state.PlayingState;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.utils.JsonReader;
 
 /**

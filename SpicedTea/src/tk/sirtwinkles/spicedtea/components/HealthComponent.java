@@ -18,7 +18,7 @@ public class HealthComponent extends Component {
 	@Override
 	public void update(GameSpicedTea game, PlayingState play) {
 		if (ticksSinceLastDamage > 4 && health < maxHealth) {
-			++health;
+			//++health;
 		}
 		++ticksSinceLastDamage;
 	}
@@ -37,7 +37,7 @@ public class HealthComponent extends Component {
 	}
 
 	public void setHealth(int health) {
-		this.health = health;
+		this.health = (health > maxHealth) ? maxHealth : health;
 		ticksSinceLastDamage = 0;
 	}
 

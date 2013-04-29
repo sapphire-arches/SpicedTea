@@ -4,7 +4,6 @@ import static tk.sirtwinkles.spicedtea.sys.render.LevelRenderer.TILE_SIZE;
 import tk.sirtwinkles.spicedtea.Globals;
 import tk.sirtwinkles.spicedtea.GraphicsContext;
 import tk.sirtwinkles.spicedtea.components.HealthComponent;
-import tk.sirtwinkles.spicedtea.components.ImageComponent;
 import tk.sirtwinkles.spicedtea.components.PositionComponent;
 import tk.sirtwinkles.spicedtea.state.PlayingState;
 

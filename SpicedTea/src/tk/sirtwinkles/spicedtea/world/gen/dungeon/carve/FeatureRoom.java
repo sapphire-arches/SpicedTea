@@ -1,7 +1,6 @@
 package tk.sirtwinkles.spicedtea.world.gen.dungeon.carve;
 
 import static tk.sirtwinkles.spicedtea.MathUtils.random;
-import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.BACKGROUND;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.DOOR;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.FLOOR;
 import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.WALL;

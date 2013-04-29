@@ -1,7 +1,6 @@
 package tk.sirtwinkles.spicedtea.state;
 
 import java.util.LinkedList;
-import java.util.concurrent.TimeUnit;
 
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
 import tk.sirtwinkles.spicedtea.Globals;
@@ -20,11 +19,11 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 public class TextDisplayState implements GameState {
 	private static OrderedMap<String, Object> texts;
-	private static BitmapFont bmf = new BitmapFont(true);
 	private static OrthographicCamera cam = new OrthographicCamera();
+	public static BitmapFont bmf = new BitmapFont(true); 
 
 	private String textKey;
-	private PlayingState tr;
+	private GameState tr;
 	private int offset;
 	private int maxOffset;
 	private Texture gui;
@@ -32,7 +31,7 @@ public class TextDisplayState implements GameState {
 	private long startTime;
 	private boolean continuous;
 
-	public TextDisplayState(String textKey, PlayingState tr) {
+	public TextDisplayState(String textKey, GameState tr) {
 		this.textKey = textKey;
 		this.inputEvent = false;
 		this.tr = tr;
@@ -69,6 +68,7 @@ public class TextDisplayState implements GameState {
 				TimeUtils.millis() - startTime > 3000;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void render(GameSpicedTea game) {
 		if (texts != null) {
@@ -147,6 +147,7 @@ public class TextDisplayState implements GameState {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void tick(GameSpicedTea game) {
 		if (texts == null) {

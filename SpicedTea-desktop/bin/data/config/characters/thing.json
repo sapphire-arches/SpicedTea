@@ -1,0 +1,14 @@
+{
+    "name":"imp",
+    "instance.type":"multiinstance",
+    "components":[
+          {"type":"image", "x":4,"y":0}
+        , {"type":"position"}
+        , {"type":"mover"}
+        , {"type":"xp"}
+        , {"type":"health", "max":32}
+        , {"type":"ai.driver","level":64}
+        , {"type":"image.renderer"}
+        , {"type":"npc.health.renderer"}
+    ]
+}

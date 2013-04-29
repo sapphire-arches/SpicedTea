@@ -2,7 +2,6 @@ package tk.sirtwinkles.spicedtea.components;
 
 import tk.sirtwinkles.spicedtea.entities.Entity;
 import tk.sirtwinkles.spicedtea.sys.render.HealthRenderer;
-import tk.sirtwinkles.spicedtea.sys.render.ImageComponentRenderer;
 
 import com.badlogic.gdx.utils.OrderedMap;
 

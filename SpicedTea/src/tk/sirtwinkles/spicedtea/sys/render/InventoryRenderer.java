@@ -1,15 +1,14 @@
 package tk.sirtwinkles.spicedtea.sys.render;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Rectangle;
-
 import tk.sirtwinkles.spicedtea.Globals;
 import tk.sirtwinkles.spicedtea.GraphicsContext;
 import tk.sirtwinkles.spicedtea.components.InventoryComponent;
 import tk.sirtwinkles.spicedtea.entities.Entity;
 import tk.sirtwinkles.spicedtea.state.PlayingState;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 
 public class InventoryRenderer implements Renderer {
 	private static final int GUI_TILE_SIZE = 8;

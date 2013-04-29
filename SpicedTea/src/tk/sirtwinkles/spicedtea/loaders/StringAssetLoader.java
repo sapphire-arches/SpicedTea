@@ -20,6 +20,7 @@ public class StringAssetLoader extends SynchronousAssetLoader<String, AssetLoade
 		super(new InternalFileHandleResolver());
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public String load(AssetManager assetManager, String fileName,
 			AssetLoaderParameters<String> parameter) {
@@ -43,6 +44,7 @@ public class StringAssetLoader extends SynchronousAssetLoader<String, AssetLoade
 		return "Bombs Away!";
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Array<AssetDescriptor> getDependencies(String fileName,
 			AssetLoaderParameters<String> parameter) {

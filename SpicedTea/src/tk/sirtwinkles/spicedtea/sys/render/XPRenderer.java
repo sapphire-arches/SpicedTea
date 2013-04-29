@@ -1,15 +1,14 @@
 package tk.sirtwinkles.spicedtea.sys.render;
 
-import static tk.sirtwinkles.spicedtea.sys.render.LevelRenderer.TILE_SIZE;
 import tk.sirtwinkles.spicedtea.Globals;
 import tk.sirtwinkles.spicedtea.GraphicsContext;
-import tk.sirtwinkles.spicedtea.components.HealthComponent;
 import tk.sirtwinkles.spicedtea.components.XPComponent;
 import tk.sirtwinkles.spicedtea.state.PlayingState;
+import tk.sirtwinkles.spicedtea.state.TextDisplayState;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
 
 public class XPRenderer implements Renderer {
 	private static final int HEIGHT = 4;
@@ -26,9 +25,6 @@ public class XPRenderer implements Renderer {
 
 	public void render(GraphicsContext context, PlayingState state,
 			Viewport view) {
-		Rectangle viewRect = view.getSizeAndPosition();
-		final int tx = (int) (viewRect.x / TILE_SIZE);
-		final int ty = (int) (viewRect.y / TILE_SIZE);
 		SpriteBatch sb = context.getBatch();
 		final int xbase = 9;
 		final int ybase = 4;

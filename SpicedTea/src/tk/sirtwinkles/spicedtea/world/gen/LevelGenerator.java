@@ -1,14 +1,17 @@
 package tk.sirtwinkles.spicedtea.world.gen;
 
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.BACKGROUND;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.DOOR;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.FLOOR;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.STAIR_DOWN;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.STAIR_UP;
+import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.WALL;
 import tk.sirtwinkles.spicedtea.components.PositionComponent;
 import tk.sirtwinkles.spicedtea.entities.Entity;
-import tk.sirtwinkles.spicedtea.entities.EntityFactory;
 import tk.sirtwinkles.spicedtea.world.Level;
 import tk.sirtwinkles.spicedtea.world.gen.dungeon.DungeonGenerator;
 import tk.sirtwinkles.spicedtea.world.tile.StairDirection;
 import tk.sirtwinkles.spicedtea.world.tile.Tile;
-import tk.sirtwinkles.spicedtea.world.tile.WallSide;
-import static tk.sirtwinkles.spicedtea.world.gen.TileSetProvider.*;
 
 public class LevelGenerator {
 	/**
@@ -28,7 +31,7 @@ public class LevelGenerator {
 	public static Level create(int width, int height, int depth,
 			TileSetProvider tsp, Entity player) {
 		// TODO: implement depth.
-		Level tr = new Level(width, height);
+		Level tr = new Level(width, height, depth);
 		int[][] data = new int[width][height];
 
 		DungeonGenerator.generate(width, height, depth, data, tr);

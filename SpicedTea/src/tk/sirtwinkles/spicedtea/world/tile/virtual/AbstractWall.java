@@ -4,7 +4,6 @@ import tk.sirtwinkles.spicedtea.entities.Entity;
 import tk.sirtwinkles.spicedtea.world.Level;
 import tk.sirtwinkles.spicedtea.world.tile.Tile;
 import tk.sirtwinkles.spicedtea.world.tile.TileClass;
-import tk.sirtwinkles.spicedtea.world.tile.WallSide;
 
 public abstract class AbstractWall extends Tile {
 

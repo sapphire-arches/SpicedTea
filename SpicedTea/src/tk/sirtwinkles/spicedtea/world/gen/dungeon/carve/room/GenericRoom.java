@@ -17,7 +17,8 @@ public class GenericRoom implements RoomFeature {
 			int rx = random.nextInt(in.w - 2) + 1 + in.x;
 			int ry = random.nextInt(in.h - 2) + 1 + in.y;
 			if (data[rx][ry] == FLOOR) {
-				Entity toAdd = EntityFactory.buildEntity("spider");
+				String[] ents = {"spider", "imp", "cyclops", "thing"};
+				Entity toAdd = EntityFactory.buildEntity(ents[random.nextInt(level.getLevel() + 1)]);
 				PositionComponent pc = (PositionComponent) toAdd.getComponent("position");
 				pc.x = rx;
 				pc.y = ry;

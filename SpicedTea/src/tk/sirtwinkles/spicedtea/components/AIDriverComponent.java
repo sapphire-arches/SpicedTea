@@ -1,9 +1,8 @@
 package tk.sirtwinkles.spicedtea.components;
 
-import static tk.sirtwinkles.spicedtea.MathUtils.random;
 import static tk.sirtwinkles.spicedtea.MathUtils.abs;
+import static tk.sirtwinkles.spicedtea.MathUtils.random;
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
-import tk.sirtwinkles.spicedtea.entities.Entity;
 import tk.sirtwinkles.spicedtea.state.PlayingState;
 import tk.sirtwinkles.spicedtea.sys.combat.Attack;
 import tk.sirtwinkles.spicedtea.world.Level;
@@ -22,6 +21,7 @@ public class AIDriverComponent extends Component {
 	@Override
 	public void update(GameSpicedTea game, PlayingState play) {
 		((XPComponent)owner.getComponent("xp")).level = level;
+		((XPComponent)owner.getComponent("xp")).nextLevelXP = Integer.MAX_VALUE; //We don't ever want to level enimies.
 		// Random movement
 		PositionComponent pc = (PositionComponent) owner
 				.getComponent("position");

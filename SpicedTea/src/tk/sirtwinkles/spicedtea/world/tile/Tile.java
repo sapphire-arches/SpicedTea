@@ -1,7 +1,6 @@
 package tk.sirtwinkles.spicedtea.world.tile;
 
 import tk.sirtwinkles.spicedtea.entities.Entity;
-import tk.sirtwinkles.spicedtea.state.PlayingState;
 import tk.sirtwinkles.spicedtea.world.Level;
 
 public abstract class Tile extends Entity {
@@ -46,6 +45,10 @@ public abstract class Tile extends Entity {
 
 	public int getImageY() {
 		return imgY;
+	}
+	
+	public String getID() {
+		return id;
 	}
 	
 	public abstract void onEntityStep(Entity step, Level in);

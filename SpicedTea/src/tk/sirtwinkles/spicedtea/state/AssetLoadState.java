@@ -1,22 +1,23 @@
 package tk.sirtwinkles.spicedtea.state;
 
-import com.badlogic.gdx.Gdx;
+import tk.sirtwinkles.spicedtea.GameSpicedTea;
+import tk.sirtwinkles.spicedtea.Globals;
+import tk.sirtwinkles.spicedtea.entities.EntityFactory;
+import tk.sirtwinkles.spicedtea.loaders.StringAssetLoader;
+import tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.RoomFeatureFactory;
+
 import com.badlogic.gdx.Application.ApplicationType;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Texture;
 
-import tk.sirtwinkles.spicedtea.GameSpicedTea;
-import tk.sirtwinkles.spicedtea.Globals;
-import tk.sirtwinkles.spicedtea.GraphicsContext;
-import tk.sirtwinkles.spicedtea.entities.EntityFactory;
-import tk.sirtwinkles.spicedtea.loaders.StringAssetLoader;
-import tk.sirtwinkles.spicedtea.world.gen.dungeon.carve.room.RoomFeatureFactory;
-
 public class AssetLoadState implements GameState {
 	private boolean doneLoading;
-	private float progress;
+	
+	//TODO:Implement a progress bar renderer
+	//private float progress;
 
 	@Override
 	public void onEnterState(GameSpicedTea game) {
@@ -49,16 +50,17 @@ public class AssetLoadState implements GameState {
 
 	@Override
 	public void render(GameSpicedTea game) {
-		GraphicsContext g = game.getContext();
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		// TODO :Draw a progress bar.
+		//GraphicsContext g = game.getContext();
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		Gdx.graphics.requestRendering();
 	}
 
 	@Override
 	public void tick(GameSpicedTea game) {
 		doneLoading = Globals.assets.update();
-		progress = Globals.assets.getProgress();
+		//TODO:Implement a progress bar
+		//progress = Globals.assets.getProgress();
 		if (doneLoading) {
 			try {
 				EntityFactory.parseCompoents();

@@ -1,15 +1,13 @@
 package tk.sirtwinkles.spicedtea.state;
 
+import static tk.sirtwinkles.spicedtea.MathUtils.random;
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
 import tk.sirtwinkles.spicedtea.Globals;
-import tk.sirtwinkles.spicedtea.components.HealthComponent;
 import tk.sirtwinkles.spicedtea.components.PlayerDriverComponent;
 import tk.sirtwinkles.spicedtea.components.PositionComponent;
-import tk.sirtwinkles.spicedtea.components.RenderComponent;
 import tk.sirtwinkles.spicedtea.entities.Entity;
 import tk.sirtwinkles.spicedtea.entities.EntityFactory;
 import tk.sirtwinkles.spicedtea.sys.combat.CombatSystem;
-import tk.sirtwinkles.spicedtea.sys.render.HealthBarRenderer;
 import tk.sirtwinkles.spicedtea.sys.render.RenderingSystem;
 import tk.sirtwinkles.spicedtea.sys.render.Viewport;
 import tk.sirtwinkles.spicedtea.world.World;
@@ -29,9 +27,9 @@ public class PlayingState implements GameState {
 	// Should we regenerate the world?
 	private boolean generateWorld;
 	private int currentLevel;
-	//Next state.
+	// Next state.
 	private GameState nextState;
-	//Should we switch?
+	// Should we switch?
 	private boolean changeState;
 
 	public PlayingState() {
@@ -45,8 +43,10 @@ public class PlayingState implements GameState {
 			Entity ent = EntityFactory.buildEntity("Player");
 			player = (PlayerDriverComponent) ent.getComponent("player.driver");
 			world = new World(ent);
-			render = new RenderingSystem(new Viewport(new Rectangle()), this);
+			//Combat system must be initialized before renderer, AttacksRenderer
+			//depends on the CombatSystem being there when it is constructed.
 			combat = new CombatSystem();
+			render = new RenderingSystem(new Viewport(new Rectangle()), this);
 			// Build player
 			PositionComponent pc = (PositionComponent) ent
 					.getComponent("position");
@@ -80,17 +80,7 @@ public class PlayingState implements GameState {
 			if (player.getPerformedActionLastUpdate()) {
 				world.update(game, this);
 				combat.run(game, this);
-				
-				for (Entity ent : world.getCurrent().getEntities()) {
-					HealthComponent hc = (HealthComponent) ent.getComponent("health");
-					if (hc != null) {
-						if (hc.getHealth() <= 0) {
-							world.getCurrent().removeEntity(ent);
-							ent.destroy(game, this);
-						}
-					}
-				}
-				
+
 				if (world.getCurrent().isComlete()) {
 					TileSetProvider prov = getNextTileset();
 					Entity player = world.getCurrent().getEntity("player");
@@ -99,8 +89,8 @@ public class PlayingState implements GameState {
 						ent.destroy(game, this);
 					}
 
-					world.setCurrent(LevelGenerator.create(80, 40, ++currentLevel, prov,
-							player));
+					world.setCurrent(LevelGenerator.create(80, 40,
+							++currentLevel, prov, player));
 				}
 			}
 			// Remove any input events that were not processed.
@@ -110,13 +100,35 @@ public class PlayingState implements GameState {
 
 	private TileSetProvider getNextTileset() {
 		String tsName = "RedBrick.json";
-		switch(currentLevel) {
-		case 0: tsName = "GreyBrick.json"; break;
-		default: System.out.println("Warning: no tileset specified for level: " + (currentLevel + 1));break;
+		switch (currentLevel) {
+		case 0:
+			tsName = "GreyBrick.json";
+			requestStateChange(new TextDisplayState("circle_2", this));
+			break;
+		case 1:
+			tsName = "BlueBrick.json";
+			requestStateChange(new TextDisplayState("circle_3", this));
+			break;
+		case 2:
+			tsName = "BlackBrick.json";
+			requestStateChange(new TextDisplayState("circle_4", this));
+			break;
+		case 3:
+			requestStateChange(new TextDisplayState("win", this));
+		default:
+			System.out.println("Warning: no tileset specified for level: "
+					+ (currentLevel + 1));
+			String[] chooseFrom = {
+					  "GreyBrick"
+					, "BlueBrick"
+					, "BlackBrick"
+					, "GreyBrick" };
+			tsName = chooseFrom[random.nextInt(chooseFrom.length)];
+			break;
 		}
-		
-		
-		return new JSONTileSetProvider((String) Globals.assets.get("data/config/tilesets/" + tsName));
+
+		return new JSONTileSetProvider(
+				(String) Globals.assets.get("data/config/tilesets/" + tsName));
 	}
 
 	@Override
@@ -133,16 +145,16 @@ public class PlayingState implements GameState {
 	public RenderingSystem getRenderingSystem() {
 		return this.render;
 	}
-	
+
 	public void requestStateChange(GameState to) {
 		this.nextState = to;
 		this.changeState = true;
 	}
-	
+
 	public Entity getPlayer() {
 		return player.getOwner();
 	}
-	
+
 	public CombatSystem getCombatSystem() {
 		return combat;
 	}

@@ -1,7 +1,6 @@
 package tk.sirtwinkles.spicedtea.components;
 
 import java.util.LinkedList;
-import java.util.Queue;
 
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
 import tk.sirtwinkles.spicedtea.entities.Entity;
@@ -11,9 +10,7 @@ import tk.sirtwinkles.spicedtea.world.Level;
 import tk.sirtwinkles.spicedtea.world.Point;
 import tk.sirtwinkles.spicedtea.world.util.Pather;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.OrderedMap;
-import com.badlogic.gdx.utils.TimeUtils;
 
 /**
  * Provides a common interface for moving entites

@@ -3,7 +3,6 @@ package tk.sirtwinkles.spicedtea;
 import tk.sirtwinkles.spicedtea.input.InputQueue;
 import tk.sirtwinkles.spicedtea.state.AssetLoadState;
 import tk.sirtwinkles.spicedtea.state.GameState;
-import tk.sirtwinkles.spicedtea.state.PlayingState;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;

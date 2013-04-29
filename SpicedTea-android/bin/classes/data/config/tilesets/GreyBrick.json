@@ -1,6 +1,6 @@
 {
     "name":"RedBrick",
-    "description":"A red brick tileset.",
+    "description":"A greenish-grey brick tileset.",
     "tiles":{
           "background":{"x":0 ,"y":0,"width":8,"height":2}
         , "floor"     :{"x":8 ,"y":0,"width":4,"height":4}

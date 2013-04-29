@@ -1,14 +1,12 @@
 package tk.sirtwinkles.spicedtea.components;
 
-import com.badlogic.gdx.utils.OrderedMap;
-
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
-import tk.sirtwinkles.spicedtea.entities.Entity;
 import tk.sirtwinkles.spicedtea.state.PlayingState;
 import tk.sirtwinkles.spicedtea.state.TextDisplayState;
 
+import com.badlogic.gdx.utils.OrderedMap;
+
 public class XPComponent extends Component {
-	public static final int MAX_LEVEL = 30;
 	public int xp;
 	public int nextLevelXP;
 	public int level;
@@ -23,7 +21,7 @@ public class XPComponent extends Component {
 
 	@Override
 	public void update(GameSpicedTea game, PlayingState play) {
-		if (xp >= nextLevelXP && level < MAX_LEVEL) {
+		if (xp >= nextLevelXP) {
 			++level;
 			xp -= nextLevelXP;
 			nextLevelXP = (level * level * level);
@@ -31,6 +29,7 @@ public class XPComponent extends Component {
 			if (owner.getComponent("health") != null) {
 				HealthComponent hc = (HealthComponent) owner.getComponent("health");
 				hc.maxHealth += level;
+				hc.setHealth(hc.maxHealth);
 			}
 			
 			if (firstLevel && owner.getID().equalsIgnoreCase("player")) {

@@ -1,10 +1,9 @@
 package tk.sirtwinkles.spicedtea.components;
 
-import com.badlogic.gdx.utils.OrderedMap;
-import com.sun.org.apache.xerces.internal.impl.dv.ValidatedInfo;
-
 import tk.sirtwinkles.spicedtea.GameSpicedTea;
 import tk.sirtwinkles.spicedtea.state.PlayingState;
+
+import com.badlogic.gdx.utils.OrderedMap;
 
 public class PositionComponent extends Component {
 	public PositionComponent(OrderedMap<String, Object> config) {

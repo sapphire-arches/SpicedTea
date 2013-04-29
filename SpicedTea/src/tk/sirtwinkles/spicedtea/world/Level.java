@@ -13,14 +13,14 @@ import tk.sirtwinkles.spicedtea.world.tile.TileClass;
 public class Level {
 	private Tile[][] tiles;
 	private boolean[][] visible;
-	private int width, height;
+	private int width, height, level;
 	private LinkedList<Entity> ents;
 	private LinkedList<Entity> toRemove;
 	private LinkedList<Entity> toAdd;
 	private HashMap<String, Entity> entityMap;
 	private boolean completed;
 
-	public Level(int width, int height) {
+	public Level(int width, int height, int level) {
 		this.tiles = new Tile[width][height];
 		this.visible = new boolean[width][height];
 		this.width = width;
@@ -29,6 +29,7 @@ public class Level {
 		this.toAdd = new LinkedList<Entity>();
 		this.toRemove = new LinkedList<Entity>();
 		this.entityMap = new HashMap<String, Entity>();
+		this.level = level;
 		for (int x = 0; x < width; ++x) {
 			for (int y = 0; y < height; ++y) {
 				tiles[x][y] = new TileBlack(x, y);
@@ -146,6 +147,10 @@ public class Level {
 			}
 			Point.free(p);
 		}
+	}
+	
+	public int getLevel() {
+		return level;
 	}
 
 	public void complete() {
