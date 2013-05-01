@@ -1,5 +1,0 @@
-{
-    "type":"npc.health.renderer",
-    "depends":["health"],
-    "class":"tk.sirtwinkles.spicedtea.components.NPCHealthRenderComponent",
-}

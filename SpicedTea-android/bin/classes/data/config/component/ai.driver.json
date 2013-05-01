@@ -1,5 +1,0 @@
-{
-    "type":"ai.driver",
-    "depends":["position","mover","attack","xp"],
-    "class":"tk.sirtwinkles.spicedtea.components.AIDriverComponent",
-}

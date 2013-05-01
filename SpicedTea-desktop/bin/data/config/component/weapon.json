@@ -1,5 +1,0 @@
-{
-    "type":"weapon",
-    "depends":[],
-    "class":"tk.sirtwinkles.spicedtea.components.WeaponComponent",
-}
